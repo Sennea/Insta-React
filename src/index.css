@@ -6,9 +6,176 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("../src/img/wall4.png");
+  width: 100%;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.comment {
+  color: #1b1e21;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.comment-section {
+  border-left: 1px solid #e2e2e2;
+  height: 300px;
+}
+
+.comment-section-sm {
+  height: 200px;
+}
+
+.post {
+  background-color: #fefefe;
+  border-radius: 20px;
+  border: 1px solid #e2e2e2;
+}
+
+.person-photo{
+  font-weight: bold;
+  color: #1b1e21;
+}
+
+.person-image-cropper{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.person-image-cropper-sm{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.relations {
+  background-color: #fefefe;
+  border: 1px solid #e2e2e2;
+  height: 300px;
+  padding: 5px;
+  border-radius: 10px;
+  position: fixed;
+  top: 80px !important;
+}
+
+.relations-sm {
+  background-color: #fefefe;
+  border: 1px solid #e2e2e2;
+  height: 120px;
+  border-radius: 10px;
+}
+
+.side-scroll-parent {
+  white-space: nowrap !important;
+  max-width: 100%;
+  overflow: auto;
+}
+
+.side-scroll {
+  float: none !important;
+  display: inline-block !important;
+}
+
+.navbar-bg{
+  background-color: #80bdff;
+}
+
+.forget {
+  font-style: italic;
+  font-size: 14px;
+  color: #40acee !important;
+}
+
+.profile-space{
+  background-color: #fefefe;
+  border-right: 1px solid #e2e2e2;
+  width: 100%;
+  height: calc(100vh - 56px) !important;
+  top: 56px !important;
+}
+
+.link-style{
+  color: black;
+}
+
+.album{
+  border: 3px solid #80bdff;
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+  object-fit: cover;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.album-title{
+  /*display: block;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-wrap: break-word;*/
+}
+
+.detail-border-top{
+  border-top: 1px solid #dcdcdc;
+  width: 100%;
+}
+
+.detail-border-bottom{
+  border-bottom: 1px solid #dcdcdc;
+  width: 100%;
+}
+
+.like-star {
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.img-container{
+  display: inline-block;
+  position: relative;
+}
+
+.time{
+  color: darkgrey !important;
+  font-size: 10px !important;
+}
+
+.text-small{
+  font-size: 8px !important;
+}
+
+
+
+
+
+
+
+.not-found{
+  background-image: url("https://internetdevels.com/sites/default/files/public/blog_preview/404_page_cover.jpg");
+  width: 864px;
+  height: 578px;
+  display: block;
+  margin: auto;
+  top: 80px !important;
+}
+
+.clickable{
+  cursor: pointer;
+}
+
+.tmp{
+  background-color: #61dafb;
 }
