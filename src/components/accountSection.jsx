@@ -32,6 +32,25 @@ class AccountSection extends Component {
         this.setState({personPosts, comments});
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevProps.match.params.author !== this.props.match.params.author){
+            const comments = [...getComments()];
+
+            const author = this.props.match.params.author;
+            const person = getPerson(author);
+            if(!person) return this.props.history.replace('not-found');
+            this.setState({person});
+
+            const personPosts = [...getPersonPosts(person.author)];
+            console.log(personPosts);
+            person.numberOfPosts = personPosts.length;
+            let number= 0;
+            personPosts.map(p => number += p.numberOfLikes);
+            person.numberOfLikes =number;
+            this.setState({personPosts, comments});
+        }
+    }
+
 
     render() {
         const {person,personPosts, comments, size, liked} = this.state;
@@ -51,7 +70,7 @@ class AccountSection extends Component {
                             />
                         </div>
                     </div>
-                    <div className="col-8 offset-1 mt-2">
+                    <div className="col-md-8 offset-md-1 col-10 mt-2">
                         <div className="col-12">
                             <Post
                                 size={size}
@@ -62,7 +81,6 @@ class AccountSection extends Component {
                             />
                         </div>
                     </div>
-                    <div className="col-1"></div>
                 </div>
             </div>
         );

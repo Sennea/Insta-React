@@ -85,7 +85,7 @@ code {
 }
 
 .navbar-bg{
-  background-color: #80bdff;
+  background-color: #80bdff !important;
 }
 
 .forget {
@@ -157,7 +157,32 @@ code {
   font-size: 8px !important;
 }
 
+.active-pink-4 input[type=text]:focus:not([readonly]) {
+  border: 1px solid #80bdff;
+  box-shadow: 0 0 0 1px #80bdff;
+}
 
+.filtered-person-field{
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.searched-position{
+  display: inline-block;
+  position: relative;
+}
+
+.search-box{
+  width: 100%;
+}
+
+.avatar-mini{
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.darker-background{
+  background-color: #fcfcfc;
+}
 
 
 

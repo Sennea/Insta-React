@@ -35,7 +35,7 @@ class RegisterForm extends Form {
                     {this.renderInput('name', 'Name')}
                     {this.renderButton('Register','btn btn-primary btn-block ')}
                 </form>
-                <NavLink to="/login" className="forget">Already have an Account? Login now!</NavLink>
+                <NavLink to="/login" className="forget text-center d-block">Already have an Account? Login now!</NavLink>
             </div>
         );
     }

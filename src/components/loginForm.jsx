@@ -34,7 +34,7 @@ class LoginForm extends Form {
                     {this.renderButton('Login!', 'btn btn-primary btn-block'  )}
                 </form>
                 <NavLink to="/register" className="btn btn-primary btn-block mt-2">Create Account</NavLink>
-                <a className="forget">Forget password?</a>
+                <a className="forget text-center d-block">Forget password?</a>
             </div>
         );
     }

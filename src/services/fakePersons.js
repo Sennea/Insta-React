@@ -10,19 +10,19 @@ const persons = [
 
     {
         _id: "5b21ca3eeb7f6fbccd471817",
-        author: "Person 2" ,
+        author: "kaka 2" ,
         img: "https://images.wallpaperscraft.com/image/tree_fog_nature_beautiful_84257_1280x720.jpg",
     },
 
     {
         _id: "5b21ca3eeb7f6fbcc234d471819",
-        author: "Person 3" ,
+        author: "kakaka 3" ,
         img: "https://images.wallpaperscraft.com/image/kitten_fluffy_face_rose_grass_look_85837_1280x720.jpg"
     },
 
     {
         _id: "5b21ca321eeb7f6fb421ccd471815",
-        author: "Person 4" ,
+        author: "ka 4" ,
         img: "https://images.wallpaperscraft.com/image/bridge_sun_beams_light_morning_river_park_fairy_tale_48376_1280x720.jpg"
     },
 

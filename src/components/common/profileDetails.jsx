@@ -1,13 +1,14 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {Avatar} from "@material-ui/core";
 
 const ProfileDetails = ({person, size}) => {
     return (
         <div>
-            <img src={person.img} className={size === 0? "person-image-cropper-sm mt-2" : "person-image-cropper mt-2"} />
+            <img src={person.img} className={size === 0? "person-image-cropper-sm mt-3" : "person-image-cropper mt-4"} />
             {size === 0? (<p className="text-small"> {person.author}</p>) : (<h3> {person.author}</h3>)}
 
+
+            <div className="darker-background">
             <i className="fa fa-picture-o detail-border-top d-block pt-4 mb-4">
                 <a className="ml-2 ">{person.numberOfPosts} </a>
             </i>
@@ -22,6 +23,7 @@ const ProfileDetails = ({person, size}) => {
                 to={`/albums/${person.author}`}>
                 <a className="ml-2">{person.numberOfAlbums} </a>
             </Link>
+            </div>
         </div>
     );
 };

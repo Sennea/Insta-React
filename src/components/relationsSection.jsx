@@ -27,7 +27,7 @@ const RelationsSection = ({relations, size}) => {
                         {size === 0 ?
                             <Link to={`/account/${relation.author}`}>
                                 <figure>
-                                    <Avatar src={relation.img} className="big-avatar-sm"/>
+                                    <Avatar src={relation.img} className="big-avatar-sm mt-2"/>
                                     <figcaption className="link-style">
                                         <div className="text-center">
                                             <a className="ml-2 mt-2"> {relation.author} </a>
@@ -36,7 +36,7 @@ const RelationsSection = ({relations, size}) => {
                                     </figcaption>
                                 </figure>
                             </Link> :
-                            <Link to={`/account/${relation.author}`} className="link-style row ml-1 mr-0 mt-1 ">
+                            <Link to={`/account/${relation.author}`} className="link-style row ml-1 mr-0 mt-3 ">
                                 <Avatar src={relation.img} className="big-avatar"/>
                                 <div>
                                     <a className="ml-2 mt-2"> {relation.author} </a>
