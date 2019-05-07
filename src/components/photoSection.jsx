@@ -19,7 +19,8 @@ class PhotoSection extends Component {
 
     state = {
         show : false,
-        height: ''
+        height: '',
+        hovered: false
     };
 
     showStar = () => {
@@ -41,7 +42,7 @@ class PhotoSection extends Component {
             if(this.element){
                 const height = this.element.clientHeight;
                 this.setState({height: height})
-                console.log("heh-cDu", this.element.clientHeight )
+                //console.log("heh-cDu", this.element.clientHeight )
             }
         }
     }
@@ -49,31 +50,42 @@ class PhotoSection extends Component {
     componentDidMount() {
         if(this.element){
             const height = this.element.clientHeight;
-            console.log("heh-cDm" , height);
+            //console.log("heh-cDm" , height);
 
             this.setState({height: height})
         }
     }
 
     getHeight(){
-        console.log("heh-getHeight" , this.state.height);
+        //console.log("heh-getHeight" , this.state.height);
         return this.state.height;
     }
 
     render()
     {
         const {post, onLike} = this.props;
+        const {hovered} = this.state;
         return (
             <div className="col-md-12 pl-4 pr-4 col-lg-8 "
-                 ref={ element => {this.element = element}}>
-                <div className="img-container pl-3" >
+                 ref={element => {
+                     this.element = element
+                 }}>
+                <div className="img-container pl-3"
+                     onMouseEnter={this.handleDeleteButtonShow}
+                     onMouseLeave={this.handleDeleteButtonShow}
+                >
                     <img
-                         src={post.img}
-                         alt={post.img}
-                         className="rounded clickable" width="100%"
-                         onDoubleClick={()  => {
-                             onLike(post);
-                         }}/>
+                        src={post.img}
+                        alt={post.img}
+                        className="rounded clickable embed-responsive embed-responsive-16by9"
+                        onDoubleClick={() => {
+                            onLike(post);
+                        }}
+                    />
+                    {hovered && <i
+                        className="fa fa-minus-circle float-right text-lighter clickable delete-photo"
+                        aria-hidden="true"
+                    />}
                     {
                         <Star className="fa fa-star like-star fa-3x" pose={this.state.show ? 'visible' : 'hidden'}/>
                     }
@@ -84,19 +96,24 @@ class PhotoSection extends Component {
                     <div className="col-4 clickable"
                          onDoubleClick={() => onLike(post)}>
                         <i className={post.liked === true ? "fa fa-star" : "fa fa-star-o"}/>
-                        <a className="ml-2">{post.numberOfLikes}</a>
+                        <div className="ml-2 d-inline-block">{post.numberOfLikes}</div>
                     </div>
                     <div className="col-4">
                         <i className="fa fa-comment-o"/>
-                        <a className="ml-2">{post.numberOfComments}</a>
+                        <div className="ml-2 d-inline-block">{post.numberOfComments}</div>
                     </div>
                     <div className="col-4">
                         <i className="fa fa-eye"/>
-                        <a className="ml-2">{post.numberOfViews}</a>
+                        <div className="ml-2 d-inline-block">{post.numberOfViews}</div>
                     </div>
                 </div>
             </div>
         );
+    }
+
+    handleDeleteButtonShow = () =>{
+        const hovered = !this.state.hovered;
+        this.setState({hovered});
     }
 }
 

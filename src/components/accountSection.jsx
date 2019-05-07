@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {getPerson} from "../services/fakePersons";
-import {getPersonPosts, getPosts} from "../services/fakePosts";
+import {getPersonPosts} from "../services/fakePosts";
 import {getComments} from "../services/fakeComents";
 import ProfileDetails from "./common/profileDetails";
 import Post from "./common/post";

@@ -1,6 +1,6 @@
 import {NavLink} from "react-router-dom";
 
-import React, {Component} from 'react';
+import React from 'react';
 import Photos from "./photos";
 import SearchBoxPerson from "./searchBoxPerson";
 
@@ -29,13 +29,6 @@ class NavBar extends Photos {
                                     onChange={this.handleSearch}
                                     filtered={filtered}
                                     handleSelect={this.handleSelect}
-                                />
-                            </li>
-                            <li className="nav-item col-2">
-                                <i
-                                    className="fa fa-plus-circle fa-2x"
-                                    aria-hidden="true"
-                                    onClick={this.handleAddPost}
                                 />
                             </li>
                         </ul>

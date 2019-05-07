@@ -19,12 +19,13 @@ const SearchBoxPerson = ({value, onChange, filtered, handleSelect}) => {
                   className={value!== "" ? "dropdown-menu d-block ml-4 col-9" : "d-none"}>
                 {filtered.map(fPerson =>
                     <Link
+                        key={fPerson._id}
                         to={`/account/${fPerson.author}`}
                         className="dropdown-item link-style border-top pb-3 pt-2"
                         onClick={handleSelect}
                     >
                         <Avatar src={fPerson.img} className="avatar-mini float-left "> </Avatar>
-                        <a className="ml-2" >{fPerson.author}</a>
+                        <div className="ml-2" >{fPerson.author}</div>
                     </Link>
                 )}
             </div>: null}

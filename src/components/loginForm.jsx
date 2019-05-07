@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Joi from "joi-browser"
 import Form from "./common/form";
 import {NavLink} from "react-router-dom";
@@ -34,7 +34,7 @@ class LoginForm extends Form {
                     {this.renderButton('Login!', 'btn btn-primary btn-block'  )}
                 </form>
                 <NavLink to="/register" className="btn btn-primary btn-block mt-2">Create Account</NavLink>
-                <a className="forget text-center d-block">Forget password?</a>
+                <div className="forget text-center d-block">Forget password?</div>
             </div>
         );
     }

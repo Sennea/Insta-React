@@ -60,7 +60,6 @@ code {
   background-color: #fefefe;
   border: 1px solid #e2e2e2;
   height: 300px;
-  padding: 5px;
   border-radius: 10px;
   position: fixed;
   top: 80px !important;
@@ -114,13 +113,6 @@ code {
   object-fit: cover;
   margin-left: auto;
   margin-right: auto;
-}
-
-.album-title{
-  /*display: block;
-  margin-left: auto;
-  margin-right: auto;
-  overflow-wrap: break-word;*/
 }
 
 .detail-border-top{
@@ -184,7 +176,70 @@ code {
   background-color: #fcfcfc;
 }
 
+.background-dark{
+  background-color: #eeeeee;
+}
 
+.text-lighter{
+  color: #b7b7b7;
+}
+
+.relation-top{
+  background-color: #80bdff !important;
+  height: 50px;
+  border: 1px solid #e2e2e2;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: fixed;
+}
+
+.relation-left{
+  background-color: #80bdff !important;
+  width: 80px;
+  height:100px;
+  border: 1px solid #e2e2e2;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.background-pink{
+  background-color: #b6c7db !important;
+}
+
+.delete-photo{
+  position: absolute;
+  right: 3%;
+  top: 3%
+}
+
+.new-post-border{
+  border: 2px solid #e2e2e2;
+  width: auto;
+  height: 300px;
+}
+
+.text-small-my{
+  font-size: 12px !important;
+  margin: 0;
+}
+
+.relation-show{
+  width: 100%;
+  height: auto;
+}
+
+.my-modal{
+  background-image: url("../src/img/wall4.png");
+}
+
+.new-post{
+  width: auto;
+  height: 100%;
+}
+
+.noresize{
+  resize: none;
+}
 
 
 
@@ -202,5 +257,7 @@ code {
 }
 
 .tmp{
-  background-color: #61dafb;
+  background-color: #80bdff;
+  height: 200px;
+  width: auto;
 }

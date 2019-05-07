@@ -2,7 +2,7 @@ const comments = [
     {
         _id: "5b21ca3eeb7f6fbccd471815",
         author: "Commenter 1" ,
-        text: "gretaafafae wffwqvd fewf f e "
+        text: "gretaafafae wffwqvd fewf f "
     },
 
     {

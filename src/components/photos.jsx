@@ -3,22 +3,33 @@ import {getPosts} from "../services/fakePosts";
 import {getComments} from "../services/fakeComents";
 import {getRelations} from "../services/fakeRelation";
 import RelationsSection from "./relationsSection";
-import Post from "./common/post";
 import {getPersons} from "../services/fakePersons";
-import {Link} from "react-router-dom";
+
+import Post from "./common/post";
 
 class Photos extends Component {
-    state = {
-        posts:[],
-        comments:[],
-        relations: [],
-        persons: [],
-        filteredPersons: [],
-        size: 0,
-        liked: 0,
-        searchQuery: '',
-        add: false
-    };
+
+    constructor(props, context) {
+        super(props, context);
+
+        this.handleShow = this.handleShow.bind(this);
+        this.handleClose = this.handleClose.bind(this);
+
+        this.state = {
+            posts:[],
+            comments:[],
+            relations: [],
+            persons: [],
+            filteredPersons: [],
+            size: 0,
+            liked: 0,
+            searchQuery: '',
+            postAdding: false,
+            modalIsOpen: false,
+            show: false,
+            imgPreview: null,
+        };
+    }
 
     componentDidMount() {
         const posts = [...getPosts()];
@@ -42,29 +53,31 @@ class Photos extends Component {
     }
 
     render() {
-        const {posts, comments, relations, size, liked, add} = this.state;
+        const {posts, comments, relations, size, imgPreview} = this.state;
         return (
             <div className="container col-12 row">
 
-                {add=== false ? <i
-                    className="fa fa-plus-circle fa-2x m-2"
-                    aria-hidden="true"
-                    onClick={this.handleAddPost}
-                /> : null}
+                <div className="input-group col-6 offset-3 mt-3 row">
+                    <div className="input-group-prepend clickable"
+                         onClick={this.handleCancel}>
+                        <span className="input-group-text background-pink" id="customFileLang">Cancel</span>
+                    </div>
+                    <div className="custom-file"
+                        onChange= {(e) => this.handleNewPost(e)}>
+                        <input type="file" className="custom-file-input" id="customFileLang"/>
+                        <label className="custom-file-label" htmlFor="customFileLang">Choose file</label>
+                    </div>
+                    <div className="input-group-prepend clickable"
+                         onClick={(e) => this.handleAddPost(e)}>
+                        <span className="input-group-text background-pink" id="customFileLang">Post</span>
+                    </div>
+                </div>
+                {imgPreview &&
+                    <div className="col-6 offset-3 row new-post-border mt-2 p-2 embed-responsive embed-responsive-16by9">
+                        <img src={imgPreview} alt={imgPreview} className="embed-responsive-item p-2 "/>
+                    </div>
+                }
 
-                {add === true ? <div className="input-group col-6 offset-3 mt-3 row">
-                    <div className="input-group-prepend clickable" onClick={this.handleAddPost}>
-                        <span className="input-group-text navbar-bg" id="inputGroupFileAddon01">Cancel</span>
-                    </div>
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroupFileAddon01">Upload</span>
-                    </div>
-                    <div className="custom-file">
-                        <input type="file" className="custom-file-input" id="inputGroupFile01"
-                               aria-describedby="inputGroupFileAddon01"/>
-                        <label className="custom-file-label" htmlFor="inputGroupFile01">Choose file</label>
-                    </div>
-                </div> : null}
 
                 <div className=" row relations-sm col-md-12 d-lg-none mt-2 p-0 ml-3 d-block">
                     <RelationsSection
@@ -78,10 +91,11 @@ class Photos extends Component {
                         posts={posts}
                         comments={comments}
                         handleLike={this.handleLike}
-                        liked={liked}
+                        handleCommentDelete={this.handleCommentDelete}
+                        handleCommentSubmit={this.handleCommentSubmit}
                     />
                 </div>
-                <div className="col-3 offset-1 relations pr-2 mt-4 d-none d-lg-block sticky-top">
+                <div className="col-3 offset-1 relations mt-4 d-none d-lg-block sticky-top p-0">
                     <RelationsSection
                         relations={relations}
                     />
@@ -99,20 +113,60 @@ class Photos extends Component {
         const index = posts.indexOf(post);
         posts[index] = {...posts[index]};
         posts[index].liked = !posts[index].liked;
-        const liked = posts[index].liked;
         posts[index].numberOfLikes = posts[index].liked === true? posts[index].numberOfLikes+1: posts[index].numberOfLikes-1;
-        this.setState({posts, liked});
+        this.setState({posts});
+    };
+
+    handleCommentDelete = (comment) => {
+        const comments = this.state.comments.filter(c => c._id !== comment._id);
+        this.setState({comments});
+    };
+
+    handleNewPost = (event) =>{
+        const postAdding = !this.state.postAdding;
+        this.setState({postAdding});
+
+        const img = URL.createObjectURL(event.target.files[0]);
+        this.setState({imgPreview:img});
+    };
+
+    handleAddPost = () =>{
+        const img = this.state.imgPreview;
+        const post = {
+            _id: 'fwfwafwwff2r32t',
+            author: 'Kasia',
+            img: img,
+            numberOfComments: 0,
+            numberOfViews: 0,
+            numberOfLikes: 0
+        };
+        const posts=[post, ...this.state.posts];
+        this.setState({posts});
+        const imgPreview = null;
+        this.setState({imgPreview});
+    };
+
+    handleCancel = () => {
+        const imgPreview = null;
+        this.setState({imgPreview});
     };
 
     handleSelect = () =>{
         this.setState({searchQuery: ''})
     };
 
-    handleAddPost = () =>{
-        let add = this.state.add;
-        add = !add;
-        this.setState({add});
+    handleClose() {
+        this.setState({ show: false });
+    }
 
+    handleShow() {
+        this.setState({ show: true });
+    }
+
+    handleCommentSubmit = (text) =>{
+        const comment= {_id: "igrwrgrgegergregd24", author: 'Kasia', text: text};
+        const comments = [comment,...this.state.comments];
+        this.setState({comments});
     }
 }
 

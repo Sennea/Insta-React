@@ -21,6 +21,7 @@ function App() {
                     <Route path="/albums/:author" component={AlbumsSection}/>
                     <Route path="/account/:author" component={AccountSection}/>
                     <Route path="/not-found" component={NotFound}/>
+                    <Redirect from="/account/not-found" exact to="/not-found"/>
                     <Redirect from="/" exact to="/photos"/>
                     <Redirect to="/not-found"/>
                 </Switch>
