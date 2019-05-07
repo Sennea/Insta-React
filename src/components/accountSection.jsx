@@ -1,11 +1,12 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {getPerson} from "../services/fakePersons";
 import {getPersonPosts} from "../services/fakePosts";
 import {getComments} from "../services/fakeComents";
 import ProfileDetails from "./common/profileDetails";
 import Post from "./common/post";
+import Photos from "./photos";
 
-class AccountSection extends Component {
+class AccountSection extends Photos {
     state={
         name: 'Person 1',
         person: [],
@@ -78,6 +79,8 @@ class AccountSection extends Component {
                                 comments={comments}
                                 handleLike={this.handleLike}
                                 liked={liked}
+                                handleCommentDelete={this.handleCommentDelete}
+                                handleCommentSubmit={this.handleCommentSubmit}
                             />
                         </div>
                     </div>

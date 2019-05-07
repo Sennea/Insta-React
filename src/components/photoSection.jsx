@@ -87,7 +87,9 @@ class PhotoSection extends Component {
                         aria-hidden="true"
                     />}
                     {
-                        <Star className="fa fa-star like-star fa-3x" pose={this.state.show ? 'visible' : 'hidden'}/>
+                        <Star className="fa fa-star like-star fa-3x clickable" onDoubleClick={() => {
+                            onLike(post);
+                        }} pose={this.state.show ? 'visible' : 'hidden'}/>
                     }
                 </div>
 

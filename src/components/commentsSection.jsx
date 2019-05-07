@@ -26,7 +26,7 @@ class CommentsSection extends Component {
                               onKeyPress={(e)=> {
                                   if(e.key === "Enter" && !e.shiftKey){
                                       text !== '' && onCommentSubmit(text);
-                                      this.setState({text: ''})
+                                      this.setState({text:''})
                                   }
                               }}
                               onDoubleClick={() => {
@@ -46,11 +46,6 @@ class CommentsSection extends Component {
             </div>
         );
     }
-
-    checkKey = (e) =>{
-        return e.keyCode === 13 && e.shiftKey === false;
-    };
-
     handleChange = (e) =>{
         const text = e.target.value;
         this.setState({text});

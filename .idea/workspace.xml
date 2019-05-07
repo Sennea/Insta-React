@@ -1,32 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="61b3b6bc-225e-4ce7-83b2-fa6199fbf045" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/common/comment.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/relationModal.jsx" afterDir="false" />
+    <list default="true" id="61b3b6bc-225e-4ce7-83b2-fa6199fbf045" name="Default Changelist" comment="aaa">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/accountSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accountSection.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/commentsSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commentsSection.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/albums.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/albums.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/photoOwner.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/photoOwner.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/post.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/post.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/profileDetails.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/profileDetails.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/loginForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/loginForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navBar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/photoSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/photoSection.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/photos.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/photos.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/registerForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/registerForm.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/relationsSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/relationsSection.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/searchBoxPerson.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/searchBoxPerson.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/fakeComents.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/fakeComents.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/fakePersons.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/fakePersons.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/fakePosts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/fakePosts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/fakeRelation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/fakeRelation.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -42,8 +24,53 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/photos.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="75" column="119" selection-start-line="75" selection-start-column="80" selection-end-line="75" selection-end-column="119" />
+            <state relative-caret-position="535">
+              <caret line="85" column="81" lean-forward="true" selection-start-line="85" selection-start-column="81" selection-end-line="85" selection-end-column="81" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/index.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="296">
+              <caret line="215" selection-start-line="215" selection-end-line="215" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/commentsSection.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="28" column="59" selection-start-line="28" selection-start-column="59" selection-end-line="28" selection-end-column="59" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/relationsSection.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="28" column="52" selection-start-line="28" selection-start-column="52" selection-end-line="28" selection-end-column="52" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/photoSection.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="89" column="77" selection-start-line="89" selection-start-column="77" selection-end-line="89" selection-end-column="77" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -52,22 +79,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/index.css">
+        <entry file="file://$PROJECT_DIR$/src/components/accountSection.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="237" column="1" lean-forward="true" selection-start-line="237" selection-start-column="1" selection-end-line="237" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/commentsSection.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="20" column="58" selection-start-line="20" selection-start-column="58" selection-end-line="20" selection-end-column="58" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
+            <state>
+              <caret column="12" selection-start-column="12" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -92,6 +107,7 @@
       <find>5b21ca3eeb7f6fbccd471817</find>
       <find>5b21ca3eeb7f6fbccd471815</find>
       <find>class</find>
+      <find>relations-sm</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -118,7 +134,6 @@
         <option value="$PROJECT_DIR$/src/components/registerForm.jsx" />
         <option value="$PROJECT_DIR$/src/components/loginForm.jsx" />
         <option value="$PROJECT_DIR$/src/components/common/albums.jsx" />
-        <option value="$PROJECT_DIR$/src/components/accountSection.jsx" />
         <option value="$PROJECT_DIR$/src/components/common/profileDetails.jsx" />
         <option value="$PROJECT_DIR$/src/components/searchBoxPerson.jsx" />
         <option value="$PROJECT_DIR$/src/services/fakePersons.js" />
@@ -134,20 +149,21 @@
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/components/common/relationModal.jsx" />
         <option value="$PROJECT_DIR$/src/components/common/post.jsx" />
-        <option value="$PROJECT_DIR$/src/index.css" />
-        <option value="$PROJECT_DIR$/src/components/relationsSection.jsx" />
         <option value="$PROJECT_DIR$/src/components/common/comment.jsx" />
-        <option value="$PROJECT_DIR$/src/components/photos.jsx" />
-        <option value="$PROJECT_DIR$/src/components/photoSection.jsx" />
         <option value="$PROJECT_DIR$/src/components/commentsSection.jsx" />
+        <option value="$PROJECT_DIR$/src/components/photoSection.jsx" />
+        <option value="$PROJECT_DIR$/src/components/relationsSection.jsx" />
+        <option value="$PROJECT_DIR$/src/components/photos.jsx" />
+        <option value="$PROJECT_DIR$/src/index.css" />
+        <option value="$PROJECT_DIR$/src/components/accountSection.jsx" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-12" />
-    <option name="y" value="-12" />
-    <option name="width" value="1944" />
-    <option name="height" value="1104" />
+    <option name="x" value="1787" />
+    <option name="y" value="-11" />
+    <option name="width" value="1292" />
+    <option name="height" value="685" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -278,6 +294,8 @@
       <workItem from="1557161459526" duration="2703000" />
       <workItem from="1557178666689" duration="2807000" />
       <workItem from="1557204502901" duration="3366000" />
+      <workItem from="1557208472935" duration="244000" />
+      <workItem from="1557211090426" duration="3845000" />
     </task>
     <task id="LOCAL-00001" summary="kkk">
       <created>1556388596521</created>
@@ -293,11 +311,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556617834960</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="aaa">
+      <created>1557208552000</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1557208552000</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="159781000" />
+    <option name="totallyTimeSpent" value="163870000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -309,9 +334,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <frame x="1912" y="-8" width="1296" height="1000" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21780604" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21780604" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -327,6 +353,7 @@
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50158983" side_tool="true" weight="0.3285968" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49761525" weight="0.3285968" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
+      <window_info active="true" anchor="bottom" id="Messages" order="12" visible="true" weight="0.32756633" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -358,7 +385,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="kkk" />
-    <option name="LAST_COMMIT_MESSAGE" value="kkk" />
+    <MESSAGE value="aaa" />
+    <option name="LAST_COMMIT_MESSAGE" value="aaa" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/node_modules/font-awesome/css/font-awesome.css">
@@ -488,13 +516,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/accountSection.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/common/profileDetails.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -587,16 +608,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/relationsSection.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="87" column="56" selection-start-line="87" selection-start-column="56" selection-end-line="87" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/common/comment.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-46">
@@ -621,10 +632,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/commentsSection.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="28" column="59" selection-start-line="28" selection-start-column="59" selection-end-line="28" selection-end-column="59" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/photoSection.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="79" column="92" selection-start-line="79" selection-start-column="92" selection-end-line="79" selection-end-column="92" />
+        <state relative-caret-position="374">
+          <caret line="89" column="77" selection-start-line="89" selection-start-column="77" selection-end-line="89" selection-end-column="77" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/relationsSection.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="28" column="52" selection-start-line="28" selection-start-column="52" selection-end-line="28" selection-end-column="52" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -633,18 +664,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/photos.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="75" column="119" selection-start-line="75" selection-start-column="80" selection-end-line="75" selection-end-column="119" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/commentsSection.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="20" column="58" selection-start-line="20" selection-start-column="58" selection-end-line="20" selection-end-column="58" />
+        <state relative-caret-position="535">
+          <caret line="85" column="81" lean-forward="true" selection-start-line="85" selection-start-column="81" selection-end-line="85" selection-end-column="81" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -653,8 +674,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/index.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="237" column="1" lean-forward="true" selection-start-line="237" selection-start-column="1" selection-end-line="237" selection-end-column="1" />
+        <state relative-caret-position="296">
+          <caret line="215" selection-start-line="215" selection-end-line="215" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/accountSection.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="12" selection-start-column="12" selection-end-column="12" />
         </state>
       </provider>
     </entry>

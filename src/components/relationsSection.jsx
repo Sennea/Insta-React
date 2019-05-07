@@ -26,7 +26,7 @@ class RelationsSection extends Component {
                         <span className="d-inline-block text-center ml-2 mt-2">Dodaj do relacji</span>
                     </div>
                     :
-                    <figure className="relation-left pl-2 clickable  float-left">
+                    <figure className="relation-left clickable  float-left">
                         <i className="fa fa-plus fa-2x mt-2 ml-3 d-inline-block"/>
                         <figcaption>
                             <div className="d-inline-block ml-2 mt-2 d-block  justify-content-center">Dodaj</div>

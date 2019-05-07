@@ -55,15 +55,25 @@ class Photos extends Component {
     render() {
         const {posts, comments, relations, size, imgPreview} = this.state;
         return (
-            <div className="container col-12 row">
+            <div className="container col-12 row m-auto p-auto">
 
-                <div className="input-group col-6 offset-3 mt-3 row">
+
+
+                <div className=" mt-4 relations-sm col-md-12 d-lg-none pl-0 pr-0 ml-auto mr-auto">
+                    <RelationsSection
+                        relations={relations}
+                        size={size}
+                    />
+                </div>
+
+
+                <div className="input-group col-lg-8 col-md-12 mt-4 mb-2">
                     <div className="input-group-prepend clickable"
                          onClick={this.handleCancel}>
                         <span className="input-group-text background-pink" id="customFileLang">Cancel</span>
                     </div>
                     <div className="custom-file"
-                        onChange= {(e) => this.handleNewPost(e)}>
+                         onChange= {(e) => this.handleNewPost(e)}>
                         <input type="file" className="custom-file-input" id="customFileLang"/>
                         <label className="custom-file-label" htmlFor="customFileLang">Choose file</label>
                     </div>
@@ -73,18 +83,13 @@ class Photos extends Component {
                     </div>
                 </div>
                 {imgPreview &&
-                    <div className="col-6 offset-3 row new-post-border mt-2 p-2 embed-responsive embed-responsive-16by9">
-                        <img src={imgPreview} alt={imgPreview} className="embed-responsive-item p-2 "/>
-                    </div>
+                <div className="col-lg-7 col-md-12 ml-lg-4 m-auto rounded row new-post-border  p-2 embed-responsive embed-responsive-16by9">
+                    <img src={imgPreview} alt={imgPreview} className="rounded embed-responsive-item p-2 "/>
+                </div>
                 }
 
 
-                <div className=" row relations-sm col-md-12 d-lg-none mt-2 p-0 ml-3 d-block">
-                    <RelationsSection
-                        relations={relations}
-                        size={size}
-                    />
-                </div>
+
                 <div className="col-lg-8 col-md-12 mt-4 ">
                     <Post
                         size={size}

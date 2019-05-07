@@ -68,7 +68,6 @@ code {
 .relations-sm {
   background-color: #fefefe;
   border: 1px solid #e2e2e2;
-  height: 120px;
   border-radius: 10px;
 }
 
@@ -214,8 +213,6 @@ code {
 
 .new-post-border{
   border: 2px solid #e2e2e2;
-  width: auto;
-  height: 300px;
 }
 
 .text-small-my{
