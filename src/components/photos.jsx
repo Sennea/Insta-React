@@ -9,27 +9,20 @@ import Post from "./common/post";
 
 class Photos extends Component {
 
-    constructor(props, context) {
-        super(props, context);
-
-        this.handleShow = this.handleShow.bind(this);
-        this.handleClose = this.handleClose.bind(this);
-
-        this.state = {
-            posts:[],
-            comments:[],
-            relations: [],
-            persons: [],
-            filteredPersons: [],
-            size: 0,
-            liked: 0,
-            searchQuery: '',
-            postAdding: false,
-            modalIsOpen: false,
-            show: false,
-            imgPreview: null,
-        };
-    }
+    state = {
+        posts: [],
+        comments: [],
+        relations: [],
+        persons: [],
+        filteredPersons: [],
+        size: 0,
+        liked: 0,
+        searchQuery: '',
+        postAdding: false,
+        modalIsOpen: false,
+        addingRelation: false,
+        imgPreview: null,
+    };
 
     componentDidMount() {
         const posts = [...getPosts()];
@@ -53,16 +46,15 @@ class Photos extends Component {
     }
 
     render() {
-        const {posts, comments, relations, size, imgPreview} = this.state;
+        const {posts, comments, relations, size, imgPreview, addingRelation} = this.state;
         return (
             <div className="container col-12 row m-auto p-auto">
-
-
 
                 <div className=" mt-4 relations-sm col-md-12 d-lg-none pl-0 pr-0 ml-auto mr-auto">
                     <RelationsSection
                         relations={relations}
                         size={size}
+                        handleAdd={this.handleNewRelation}
                     />
                 </div>
 
@@ -74,11 +66,14 @@ class Photos extends Component {
                     </div>
                     <div className="custom-file"
                          onChange= {(e) => this.handleNewPost(e)}>
-                        <input type="file" className="custom-file-input" id="customFileLang"/>
+                        <input type="file" className="custom-file-input" id="customFileLang"
+                               ref={input => this.addingElement = input}/>
                         <label className="custom-file-label" htmlFor="customFileLang">Choose file</label>
                     </div>
                     <div className="input-group-prepend clickable"
-                         onClick={(e) => this.handleAddPost(e)}>
+                         onClick={ !addingRelation?
+                             (e) => this.handleAddPost(e) :
+                             (e) => this.handleAddRelation(e)}>
                         <span className="input-group-text background-pink" id="customFileLang">Post</span>
                     </div>
                 </div>
@@ -97,12 +92,14 @@ class Photos extends Component {
                         comments={comments}
                         handleLike={this.handleLike}
                         handleCommentDelete={this.handleCommentDelete}
+                        handlePostDelete={this.handlePostDelete}
                         handleCommentSubmit={this.handleCommentSubmit}
                     />
                 </div>
                 <div className="col-3 offset-1 relations mt-4 d-none d-lg-block sticky-top p-0">
                     <RelationsSection
                         relations={relations}
+                        handleAdd={this.handleNewRelation}
                     />
                 </div>
             </div>
@@ -127,6 +124,11 @@ class Photos extends Component {
         this.setState({comments});
     };
 
+    handlePostDelete = (post) => {
+        const posts = this.state.posts.filter(p => p._id !== post._id);
+        this.setState({posts});
+    };
+
     handleNewPost = (event) =>{
         const postAdding = !this.state.postAdding;
         this.setState({postAdding});
@@ -135,10 +137,17 @@ class Photos extends Component {
         this.setState({imgPreview:img});
     };
 
+    handleNewRelation= () =>{
+        this.addingElement.click();
+        const addingRelation = !this.state.addingRelation;
+        this.setState({addingRelation});
+    };
+
     handleAddPost = () =>{
         const img = this.state.imgPreview;
-        const post = {
-            _id: 'fwfwafwwff2r32t',
+        if(img){
+            const post = {
+            _id: 'fwfwafwwff2rherr32t',
             author: 'Kasia',
             img: img,
             numberOfComments: 0,
@@ -146,9 +155,23 @@ class Photos extends Component {
             numberOfLikes: 0
         };
         const posts=[post, ...this.state.posts];
-        this.setState({posts});
         const imgPreview = null;
-        this.setState({imgPreview});
+        this.setState({posts, imgPreview});}
+    };
+
+
+    handleAddRelation = () =>{
+        const img = this.state.imgPreview;
+        if(img){
+            const relation = {
+                _id: 'fwfwafwwff2r32t',
+                author: 'Kasia',
+                img: img,
+            };
+        const relations=[relation, ...this.state.relations];
+        const imgPreview = null;
+        const addingRelation = !this.state.addingRelation;
+        this.setState({relations, imgPreview, addingRelation});}
     };
 
     handleCancel = () => {
@@ -160,19 +183,11 @@ class Photos extends Component {
         this.setState({searchQuery: ''})
     };
 
-    handleClose() {
-        this.setState({ show: false });
-    }
-
-    handleShow() {
-        this.setState({ show: true });
-    }
-
     handleCommentSubmit = (text) =>{
         const comment= {_id: "igrwrgrgegergregd24", author: 'Kasia', text: text};
         const comments = [comment,...this.state.comments];
         this.setState({comments});
-    }
+    };
 }
 
 export default Photos;

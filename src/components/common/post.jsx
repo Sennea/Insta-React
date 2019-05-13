@@ -13,21 +13,25 @@ class Post extends Component {
     }
 
     render(){
-        const {size, posts, comments, handleLike, handleCommentDelete, handleCommentSubmit} = this.props;
+        const {size, posts, comments, handleLike, handleCommentDelete, handleCommentSubmit, handlePostDelete} = this.props;
 
         return (
             <div>
                 {posts.map(post =>
                     <div className="post mb-2"
-                        key={post._id}>
+                         onMouseEnter={this.handleDeleteButtonShow}
+                         onMouseLeave={this.handleDeleteButtonShow}
+                         key={post._id}>
+
                         <PhotoOwner
                             post={post}
                         />
-                        <div className="row" >
+                        <div className="row">
                             <PhotoSection
                                 post={post}
                                 onLike={handleLike}
                                 liked={post.liked}
+                                onDelete={handlePostDelete}
                             />
                             <CommentsSection
                                 height={this.getHeight}
@@ -43,6 +47,7 @@ class Post extends Component {
                             onDelete={handleCommentDelete}
                             onCommentSubmit={handleCommentSubmit}
                         />
+
                     </div>
                 )}
             </div>

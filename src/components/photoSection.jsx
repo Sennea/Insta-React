@@ -63,7 +63,7 @@ class PhotoSection extends Component {
 
     render()
     {
-        const {post, onLike} = this.props;
+        const {post, onLike, onDelete} = this.props;
         const {hovered} = this.state;
         return (
             <div className="col-md-12 pl-4 pr-4 col-lg-8 "
@@ -85,6 +85,7 @@ class PhotoSection extends Component {
                     {hovered && <i
                         className="fa fa-minus-circle float-right text-lighter clickable delete-photo"
                         aria-hidden="true"
+                        onClick={() => onDelete(post)}
                     />}
                     {
                         <Star className="fa fa-star like-star fa-3x clickable" onDoubleClick={() => {

@@ -24,7 +24,7 @@ const SearchBoxPerson = ({value, onChange, filtered, handleSelect}) => {
                         className="dropdown-item link-style border-top pb-3 pt-2"
                         onClick={handleSelect}
                     >
-                        <Avatar src={fPerson.img} className="avatar-mini float-left "> </Avatar>
+                        <Avatar src={fPerson.img} className="avatar-mini float-left mr-2 "> </Avatar>
                         <div className="ml-2" >{fPerson.author}</div>
                     </Link>
                 )}

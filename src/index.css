@@ -194,8 +194,8 @@ code {
 
 .relation-left{
   background-color: #80bdff !important;
-  width: 80px;
-  height:100px;
+  width: 85px;
+  height:110px;
   border: 1px solid #e2e2e2;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -209,6 +209,12 @@ code {
   position: absolute;
   right: 3%;
   top: 3%
+}
+
+.delete-post{
+  position: absolute;
+  right: 25px;
+  top: 10px
 }
 
 .new-post-border{
@@ -226,7 +232,6 @@ code {
 }
 
 .my-modal{
-  background-image: url("../src/img/wall4.png");
 }
 
 .new-post{
