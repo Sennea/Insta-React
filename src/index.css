@@ -253,7 +253,7 @@ code {
 }
 
 .post-size{
-  max-height: 720px;
+  height: 260px !important;
   overflow: hidden;
 }
 

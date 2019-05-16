@@ -66,13 +66,13 @@ class Post extends Component {
                                 onCommentSubmit={handleCommentSubmit}
                             />
                         </div>
-{/*
+
                         <CommentsSection
                             comments={comments}
                             size={size}
                             onDelete={handleCommentDelete}
                             onCommentSubmit={handleCommentSubmit}
-                        />*/}
+                        />
 
                     </div>
                     }
