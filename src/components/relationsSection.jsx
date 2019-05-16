@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Modal} from "react-bootstrap";
 import ScrollBar from "react-perfect-scrollbar";
 import Avatar from '@material-ui/core/Avatar';
 import _ from "lodash";
@@ -8,13 +7,10 @@ class RelationsSection extends Component {
     constructor(props, context) {
         super(props, context);
 
-        this.handleShow = this.handleShow.bind(this);
-        this.handleClose = this.handleClose.bind(this);
         this.handleSortChange = this.handleSortChange.bind(this);
         this.getSortedRelations = this.getSortedRelations.bind(this);
 
         this.state = {
-            show: false,
             relationsSort: 'asc',
         };
 
@@ -32,7 +28,7 @@ class RelationsSection extends Component {
     }
 
     render() {
-        const  {size, handleAdd } = this.props;
+        const  {size, handleAdd, showModal } = this.props;
         const  {relationsSort} = this.state;
         const sorted = this.getSortedRelations();
 
@@ -94,9 +90,10 @@ class RelationsSection extends Component {
 
                             return <div
                                 key={relation._id}
-                                className={className}>
+                                className={className}
+                            >
                                 {size === 0 ?
-                                    <div onClick={this.handleShow}
+                                    <div onClick={() => showModal(relation)}
                                          className="clickable">
                                         <figure>
                                             <Avatar src={relation.img} className="big-avatar-sm ml-3 mt-2"/>
@@ -107,7 +104,7 @@ class RelationsSection extends Component {
                                             </figcaption>
                                         </figure>
                                     </div> :
-                                    <div onClick={this.handleShow}
+                                    <div onClick={()=>showModal(relation)}
                                          className="link-style row ml-2 mr-0 mt-3 clickable">
                                         <Avatar src={relation.img} className="big-avatar"/>
                                         <div>
@@ -115,30 +112,6 @@ class RelationsSection extends Component {
                                         </div>
                                     </div>
                                 }
-
-                                <Modal show={this.state.show} onHide={this.handleClose} className="my-modal">
-                                    <Modal.Header closeButton>
-                                        <Modal.Title>
-                                            <div className="row ml-2 mr-0 mt-3">
-                                                <Avatar src={relation.img} className="big-avatar"/>
-                                                <div>
-                                                    <div className="ml-2 mt-2"> {relation.author} </div>
-                                                </div>
-                                            </div>
-                                        </Modal.Title>
-                                    </Modal.Header>
-                                    <Modal.Body>
-                                        <img
-                                            src={relation.img}
-                                            alt={relation.img}
-                                            className="relation-show"
-                                        />
-                                    </Modal.Body>
-                                    <Modal.Footer>
-                                        <i className="fa fa-eye"/>
-                                        <span>55</span>
-                                    </Modal.Footer>
-                                </Modal>
                             </div>;
                         }
                     )
@@ -146,17 +119,6 @@ class RelationsSection extends Component {
             </ScrollBar>
         );
     }
-
-    handleClose() {
-        this.setState({ show: false });
-    }
-
-    handleShow() {
-        this.setState({ show: true });
-    }
-
-
-
 }
 
 export default RelationsSection;

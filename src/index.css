@@ -27,6 +27,11 @@ code {
   height: 300px;
 }
 
+.comment-section-md {
+  border-left: 1px solid #e2e2e2;
+  height: 250px;
+}
+
 .comment-section-sm {
   height: 200px;
 }
@@ -207,10 +212,14 @@ code {
 
 .delete-photo{
   position: absolute;
-  right: 3%;
-  top: 3%
+  right: 5px;
+  top: 0px
 }
 
+.comment-text{
+  overflow-wrap: break-word;
+  text-overflow: inherit;
+}
 .delete-post{
   position: absolute;
   right: 25px;
@@ -243,7 +252,14 @@ code {
   resize: none;
 }
 
+.post-size{
+  max-height: 720px;
+  overflow: hidden;
+}
 
+.post-preview{
+  max-height: 400px;
+}
 
 .not-found{
   background-image: url("https://internetdevels.com/sites/default/files/public/blog_preview/404_page_cover.jpg");

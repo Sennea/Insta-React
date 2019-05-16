@@ -19,7 +19,6 @@ class PhotoSection extends Component {
 
     state = {
         show : false,
-        height: '',
         hovered: false
     };
 
@@ -38,55 +37,42 @@ class PhotoSection extends Component {
                 this.showStar();
             }
         }
-        if(prevProps.height !== this.props.height){
-            if(this.element){
-                const height = this.element.clientHeight;
-                this.setState({height: height})
-                //console.log("heh-cDu", this.element.clientHeight )
-            }
-        }
     }
 
     componentDidMount() {
-        if(this.element){
-            const height = this.element.clientHeight;
-            //console.log("heh-cDm" , height);
 
-            this.setState({height: height})
-        }
     }
 
-    getHeight(){
-        //console.log("heh-getHeight" , this.state.height);
-        return this.state.height;
-    }
 
     render()
     {
         const {post, onLike, onDelete} = this.props;
         const {hovered} = this.state;
         return (
-            <div className="col-md-12 pl-4 pr-4 col-lg-8 "
-                 ref={element => {
-                     this.element = element
-                 }}>
-                <div className="img-container pl-3"
-                     onMouseEnter={this.handleDeleteButtonShow}
-                     onMouseLeave={this.handleDeleteButtonShow}
-                >
+            <div className="col-md-12 pl-4 pr-4 col-lg-8 text-center "
+                 onMouseEnter={this.handleDeleteButtonShow}
+                 onMouseLeave={this.handleDeleteButtonShow}>
+                {hovered && <i
+                    className="fa fa-minus-circle float-right text-lighter clickable delete-photo"
+                    aria-hidden="true"
+                    onClick={() => onDelete(post)}
+                />}
+                <div className="img-container pl-3">
                     <img
+                        ref={(imageElement) => this.imageElement = imageElement}
                         src={post.img}
+                        onLoad={() => {
+                            const height = this.imageElement.clientHeight;
+                            console.log("HEIGHT FROM PHOT" , height);
+                            this.props.getHeight(post._id, height)
+                        }}
                         alt={post.img}
-                        className="rounded clickable embed-responsive embed-responsive-16by9"
+                        className="rounded clickable embed-responsive embed-responsive-16by9 post-size"
                         onDoubleClick={() => {
                             onLike(post);
                         }}
                     />
-                    {hovered && <i
-                        className="fa fa-minus-circle float-right text-lighter clickable delete-photo"
-                        aria-hidden="true"
-                        onClick={() => onDelete(post)}
-                    />}
+
                     {
                         <Star className="fa fa-star like-star fa-3x clickable" onDoubleClick={() => {
                             onLike(post);
@@ -96,18 +82,14 @@ class PhotoSection extends Component {
 
 
                 <div className="row pl-4 mt-2 mb-2">
-                    <div className="col-4 clickable"
+                    <div className="col-6 clickable"
                          onDoubleClick={() => onLike(post)}>
                         <i className={post.liked === true ? "fa fa-star" : "fa fa-star-o"}/>
                         <div className="ml-2 d-inline-block">{post.numberOfLikes}</div>
                     </div>
-                    <div className="col-4">
+                    <div className="col-6">
                         <i className="fa fa-comment-o"/>
                         <div className="ml-2 d-inline-block">{post.numberOfComments}</div>
-                    </div>
-                    <div className="col-4">
-                        <i className="fa fa-eye"/>
-                        <div className="ml-2 d-inline-block">{post.numberOfViews}</div>
                     </div>
                 </div>
             </div>

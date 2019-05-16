@@ -12,7 +12,6 @@ class Comment extends Component {
 
         return (
             <div className={hovered ? "background-dark p-2 rounded pb-0 mr-2" : " p-2 mr-2"}
-                 key={comment._id}
                  onMouseEnter={this.handleClassNameChange}
                  onMouseLeave={this.handleClassNameChange}
             >
@@ -29,7 +28,7 @@ class Comment extends Component {
                         }}
                     />}
                 </div>
-                <p className="pr-3">{comment.text}</p>
+                <p className="pr-3 comment-text">{comment.text}</p>
             </div>
         );
     }

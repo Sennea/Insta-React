@@ -1,6 +1,5 @@
 import React from 'react';
-import {Link} from "react-router-dom";
-import {Avatar} from "@material-ui/core";
+import SearchedPerson from "./common/searchedPerson";
 
 const SearchBoxPerson = ({value, onChange, filtered, handleSelect}) => {
     return (
@@ -14,21 +13,19 @@ const SearchBoxPerson = ({value, onChange, filtered, handleSelect}) => {
                 onChange={e => onChange(e.currentTarget.value)}
             />
 
-            { filtered.length > 0 ?
-            <div  onMouseLeave={handleSelect}
-                  className={value!== "" ? "dropdown-menu d-block ml-4 col-9" : "d-none"}>
-                {filtered.map(fPerson =>
-                    <Link
-                        key={fPerson._id}
-                        to={`/account/${fPerson.author}`}
-                        className="dropdown-item link-style border-top pb-3 pt-2"
-                        onClick={handleSelect}
-                    >
-                        <Avatar src={fPerson.img} className="avatar-mini float-left mr-2 "> </Avatar>
-                        <div className="ml-2" >{fPerson.author}</div>
-                    </Link>
-                )}
-            </div>: null}
+            {filtered.length > 0 ?
+                <div onMouseLeave={handleSelect}
+                     className={value !== "" ? "dropdown-menu d-block ml-4 col-9" : "d-none"}>
+                    {filtered.map((fPerson, index) =>
+
+                        <SearchedPerson
+                            key={fPerson._id}
+                            person={fPerson}
+                            index={index}
+                            handleSelect={handleSelect}
+                        />
+                    )}
+                </div> : null}
         </form>
     );
 };

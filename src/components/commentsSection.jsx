@@ -10,14 +10,15 @@ class CommentsSection extends Component {
     };
 
     render() {
-        const {height, comments, size, onDelete, onCommentSubmit} = this.props;
+        const {comments, size, onDelete, onCommentSubmit, height} = this.props;
+        console.log("HEIGHT FROM COMMENT SECTION", height)
         const {text} = this.state;
         return (
-            <div style={{height: {height}}}
-                 className={size === 0 ? "col-md-12 d-lg-none comment-section-sm" : "col-4 comment-section d-none d-lg-block"}>
+            <div style={size !== 0 ? {height: height + 'px'} : null }
+                className={size === 0 ? "col-md-12 d-lg-none comment-section-sm " : "col-4 comment-section d-none d-lg-block img-responsive"}>
                 <ScrollBar>
-
-                    <div className="form-group pr-4">
+                    <div className="form-group pr-4"
+                    >
                     <textarea className="form-control noresize"
                               rows="2"
                               placeholder="Type in new comment..."
@@ -26,6 +27,8 @@ class CommentsSection extends Component {
                               onKeyPress={(e)=> {
                                   if(e.key === "Enter" && !e.shiftKey){
                                       text !== '' && onCommentSubmit(text);
+                                      console.log("JACHA");
+
                                       this.setState({text: ''})
                                   }
                               }}
@@ -38,6 +41,7 @@ class CommentsSection extends Component {
 
                     {comments.map(comment =>
                         <Comment
+                            key={comment._id}
                             comment={comment}
                             onDelete={onDelete}
                         />
