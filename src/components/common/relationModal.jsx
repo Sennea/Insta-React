@@ -37,7 +37,7 @@ class RelationModal extends Component {
         const {percentSeconds} = this.state;
 
         return (
-            <Modal show= {show} onHide={() => handleClose()} className="my-modal">
+            <Modal show= {show} onHide={() => handleClose()} >
                 <div className="progress mt-1">
                     <div
                         className="progress-bar progress-bar-striped progress-bar-animated"

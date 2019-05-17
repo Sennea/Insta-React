@@ -11,7 +11,6 @@ class CommentsSection extends Component {
 
     render() {
         const {comments, size, onDelete, onCommentSubmit, height} = this.props;
-        console.log("HEIGHT FROM COMMENT SECTION", height)
         const {text} = this.state;
         return (
             <div style={size !== 0 ? {height: height + 'px'} : null }

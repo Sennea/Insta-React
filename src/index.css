@@ -112,6 +112,7 @@ code {
 .album{
   border: 3px solid #80bdff;
   width: 100%;
+  max-height: 180px;
   border-radius: 10px;
   display: block;
   object-fit: cover;
@@ -212,8 +213,14 @@ code {
 
 .delete-photo{
   position: absolute;
-  right: 5px;
-  top: 0px
+  right: 0;
+  top: 0;
+}
+
+.delete-photo-sm{
+  position: absolute;
+  right: 20px;
+  top: 0;
 }
 
 .comment-text{
@@ -253,8 +260,9 @@ code {
 }
 
 .post-size{
-  height: 260px !important;
+  max-height: 500px !important;
   overflow: hidden;
+  object-fit: scale-down;
 }
 
 .post-preview{

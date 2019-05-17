@@ -107,6 +107,7 @@ class Photos extends Component {
                         relations={relations}
                         handleAdd={this.handleNewRelation}
                         showModal={this.showModal}
+
                     />
                 </div>
 

@@ -24,7 +24,7 @@ class Post extends Component {
 
     };
 
-    kasia = (post) => {
+    setResultHeight = (post) => {
         let result = this.state.imageElementHeightTab.find(obj => {
             return obj.id === post._id;
         });
@@ -40,9 +40,9 @@ class Post extends Component {
 
         return (
             <div>
-                {posts.map((post, index) =>
+                {posts.map((post) =>
                     {
-                        const postHeight = this.kasia(post);
+                        const postHeight = this.setResultHeight(post);
                     return <div className="post mb-2"
                          onMouseEnter={this.handleDeleteButtonShow}
                          onMouseLeave={this.handleDeleteButtonShow}
@@ -55,6 +55,7 @@ class Post extends Component {
                             <PhotoSection
                                 getHeight={this.getImageElementHeight}
                                 post={post}
+                                size={size}
                                 onLike={handleLike}
                                 liked={post.liked}
                                 onDelete={handlePostDelete}
