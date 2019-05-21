@@ -1,37 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="61b3b6bc-225e-4ce7-83b2-fa6199fbf045" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/logout.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/albumsService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/httpService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/personServicce.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/photoService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/relationsService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/userService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/accountSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accountSection.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/commentsSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/commentsSection.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/photoOwner.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/photoOwner.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/post.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/post.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/postModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/postModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/profileDetails.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/profileDetails.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/relationModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/relationModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/searchedPerson.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/searchedPerson.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/loginForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/loginForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/notFound.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/notFound.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/photoSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/photoSection.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/photos.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/photos.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/registerForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/registerForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/relationsSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/relationsSection.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/searchBoxPerson.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/searchBoxPerson.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-    </list>
+    <list default="true" id="61b3b6bc-225e-4ce7-83b2-fa6199fbf045" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -43,6 +13,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/photos.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="232">
+              <caret line="150" column="6" lean-forward="true" selection-start-line="150" selection-start-column="6" selection-end-line="150" selection-end-column="6" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/common/searchedPerson.jsx">
           <provider selected="true" editor-type-id="text-editor">
@@ -83,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/photoSection.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="75" column="26" selection-start-line="75" selection-start-column="26" selection-end-line="75" selection-end-column="26" />
+            <state relative-caret-position="-179">
+              <caret line="12" column="13" lean-forward="true" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -104,7 +86,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/common/profileDetails.jsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
@@ -377,7 +359,7 @@
       <workItem from="1558285585095" duration="616000" />
       <workItem from="1558286798746" duration="6161000" />
       <workItem from="1558329288039" duration="1374000" />
-      <workItem from="1558369758516" duration="33981000" />
+      <workItem from="1558369758516" duration="34492000" />
     </task>
     <task id="LOCAL-00001" summary="kkk">
       <created>1556388596521</created>
@@ -428,11 +410,18 @@
       <option name="project" value="LOCAL" />
       <updated>1558069510051</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="message">
+      <created>1558474249828</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1558474249828</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="275136000" />
+    <option name="totallyTimeSpent" value="275647000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -500,7 +489,8 @@
     <MESSAGE value="kkkkkk" />
     <MESSAGE value="yyyyy4y" />
     <MESSAGE value="kkkkkkkk" />
-    <option name="LAST_COMMIT_MESSAGE" value="kkkkkkkk" />
+    <MESSAGE value="message" />
+    <option name="LAST_COMMIT_MESSAGE" value="message" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/services/img/al3.jpg" />
@@ -779,16 +769,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/photos.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="229" selection-start-line="229" selection-end-line="229" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/common/photoOwner.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -849,16 +829,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/common/searchedPerson.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="13" lean-forward="true" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/accountSection.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -877,22 +847,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/photoSection.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="75" column="26" selection-start-line="75" selection-start-column="26" selection-end-line="75" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/common/profileDetails.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="130" selection-start-line="6" selection-start-column="130" selection-end-line="6" selection-end-column="130" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/photoSection.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-179">
+          <caret line="12" column="13" lean-forward="true" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/common/searchedPerson.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="13" lean-forward="true" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/photos.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="150" column="6" lean-forward="true" selection-start-line="150" selection-start-column="6" selection-end-line="150" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
