@@ -70,6 +70,11 @@ code {
   top: 80px !important;
 }
 
+.relation-time{
+  color: gray;
+  font-size: small !important;
+}
+
 .relations-sm {
   background-color: #fefefe;
   border: 1px solid #e2e2e2;
@@ -276,6 +281,7 @@ code {
   display: block;
   margin: auto;
   top: 80px !important;
+    overflow: hidden;
 }
 
 .clickable{

@@ -3,7 +3,6 @@ import ScrollBar from "react-perfect-scrollbar";
 import Comment from "./common/comment";
 
 
-
 class CommentsSection extends Component {
     state={
         text: ''
@@ -13,7 +12,7 @@ class CommentsSection extends Component {
         const {comments, size, onDelete, onCommentSubmit, height} = this.props;
         const {text} = this.state;
         return (
-            <div style={size !== 0 ? {height: height + 'px'} : null }
+            <div
                 className={size === 0 ? "col-md-12 d-lg-none comment-section-sm " : "col-4 comment-section d-none d-lg-block img-responsive"}>
                 <ScrollBar>
                     <div className="form-group pr-4"
@@ -26,8 +25,6 @@ class CommentsSection extends Component {
                               onKeyPress={(e)=> {
                                   if(e.key === "Enter" && !e.shiftKey){
                                       text !== '' && onCommentSubmit(text);
-                                      console.log("JACHA");
-
                                       this.setState({text: ''})
                                   }
                               }}

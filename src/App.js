@@ -1,22 +1,44 @@
-import React from 'react';
-import './App.css';
+import React, {Component} from 'react';
+import {Route,Switch,Redirect, } from "react-router-dom";
+import {ToastContainer} from "react-toastify";
 import NavBar from "./components/navBar";
-import {Route,Switch,Redirect} from "react-router-dom";
 import NotFound from "./components/notFound";
 import Photos from "./components/photos";
 import LoginForm from "./components/loginForm";
 import RegisterForm from "./components/registerForm";
 import AccountSection from "./components/accountSection";
 import AlbumsSection from "./components/albumsSection";
+import 'react-toastify/dist/ReactToastify.css'
+import './App.css';
+import Logout from "./components/logout";
 
+class App extends Component {
+    state= {
 
-function App() {
-  return (
-      <React.Fragment>
-            <NavBar/>
+    };
+
+    componentDidMount() {
+        try{
+            const user = JSON.parse(localStorage.getItem('user'));
+           // console.log(user.user.name);
+            this.setState({user})
+        }catch (e) {
+        }
+    }
+
+    render() {
+        return (
+            <React.Fragment>
+                <ToastContainer/>
+                <NavBar
+                    user={this.state.user}
+                />
                 <Switch>
-                    <Route path="/photos" component={Photos}/>
+                    <Route
+                        path="/photos"
+                        render={props => <Photos {...props} user={this.state.user}/>}/>
                     <Route path="/login" component={LoginForm}/>
+                    <Route path="/logout" component={Logout}/>
                     <Route path="/register" component={RegisterForm}/>
                     <Route path="/albums/:author" component={AlbumsSection}/>
                     <Route path="/account/:author" component={AccountSection}/>
@@ -25,8 +47,9 @@ function App() {
                     <Redirect from="/" exact to="/photos"/>
                     <Redirect to="/not-found"/>
                 </Switch>
-      </React.Fragment>
-  );
+            </React.Fragment>
+        );
+    }
 }
 
 export default App;

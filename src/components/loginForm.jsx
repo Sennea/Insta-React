@@ -2,6 +2,7 @@ import React from 'react';
 import Joi from "joi-browser"
 import Form from "./common/form";
 import {NavLink} from "react-router-dom";
+import {login} from "../services/userService";
 
 
 class LoginForm extends Form {
@@ -19,9 +20,21 @@ class LoginForm extends Form {
         password: Joi.string().required().label("Password"),
     };
 
-    doSubmit = () => {
-        //call server
-        console.log("Submitted");
+    doSubmit = async () => {
+        try {
+            const {data} = this.state;
+            const {data: jwt} = await login(data.username, data.password);
+            localStorage.setItem("user", JSON.stringify(jwt));
+            window.location='/';
+        }catch (e) {
+            if(e.response && e.response.status === 400){
+                const errors = {...this.state.errors};
+                errors.username = e.response.data;
+                this.setState({errors});
+            }
+        }
+
+
     };
 
 

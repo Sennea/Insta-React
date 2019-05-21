@@ -1,16 +1,19 @@
 import React, {Component} from 'react';
-import {getPosts} from "../services/fakePosts";
 import {getComments} from "../services/fakeComents";
-import {getRelations} from "../services/fakeRelation";
-import {getPersons} from "../services/fakePersons";
+import {getRelations} from "../services/relationsService";
+import {addPhoto, deletePhoto, getPhotos} from "../services/photoService";
+import {getUsers} from "../services/personServicce";
 import Post from "./common/post";
 import RelationsSection from "./relationsSection";
 import RelationModal from "./common/relationModal";
+import http from '../services/httpService';
+import config from '../config.json'
+import {authHeader} from "../services/userService";
 
 class Photos extends Component {
 
     state = {
-        posts: [],
+        photos: [],
         comments: [],
         relations: [],
         persons: [],
@@ -21,39 +24,43 @@ class Photos extends Component {
         postAdding: false,
         modalIsOpen: false,
         addingRelation: false,
+        imgFile: null,
         imgPreview: null,
         whichRelationToShow: {},
         show: false,
     };
 
-    componentDidMount() {
-        const posts = [...getPosts()];
+    async componentDidMount() {
+        const {data: photosData} = await getPhotos();
+        const photos = [...photosData];
+
+        const {data: relationsData} = await getRelations();
+        const relations = [...relationsData];
+
+        const {data: personsData} = await getUsers();
+        const persons = [...personsData];
+
         const comments = [...getComments()];
-        const relations = [...getRelations()];
-        const persons = [...getPersons()];
-        this.setState({posts, comments, relations, persons});
+        this.setState({ photos, comments, relations, persons});
     }
 
 
-    getSearchedData(){
-        const {persons, searchQuery} = this.state;
-
-        let filtered = [...getPersons()];
-        if(searchQuery)
-            filtered = persons.filter(
-                p => p.author.toLowerCase().startsWith(searchQuery.toLowerCase())
-            );
-
-        return {filteredPersons: filtered};
-    }
 
     render() {
-        const {posts, comments, relations, size, imgPreview, addingRelation, whichRelationToShow, show} = this.state;
+        const {comments, relations, size, imgPreview, addingRelation, whichRelationToShow, show, photos} = this.state;
+        const {user} = this.props;
         return (
             <div className="container col-12 row m-auto p-auto">
 
-                <div className="col-12 col-lg-8">
+                {!user &&
+                <h1 className="mt-2 text-center">
+                    Login to see posts!
+                </h1>
+                }
 
+                {user &&
+                <React.Fragment>
+                <div className="col-12 col-lg-9">
                     <div className=" mt-4 relations-sm col-md-12 d-lg-none pl-0 pr-0 ml-auto mr-auto">
                         <RelationsSection
                             relations={relations}
@@ -86,12 +93,14 @@ class Photos extends Component {
                         <img src={imgPreview} alt={imgPreview} className="rounded clickable embed-responsive-item p-2 post-preview"/>
                     </div>
                     }
-
-
                     <div className="col-12 mt-4 ">
+                        {photos.length === 0 && !imgPreview?
+                            <h1 className="text-center">There are no posts for You :'(</h1>: null}
+
                         <Post
+                            user={user}
+                            photos={photos}
                             size={size}
-                            posts={posts}
                             comments={comments}
                             handleLike={this.handleLike}
                             handleCommentDelete={this.handleCommentDelete}
@@ -102,7 +111,7 @@ class Photos extends Component {
 
                 </div>
 
-                <div className="col-3 offset-1 relations mt-4 d-none d-lg-block sticky-top p-0">
+                <div className="col-3 relations mt-4 d-none d-lg-block sticky-top p-0">
                     <RelationsSection
                         relations={relations}
                         handleAdd={this.handleNewRelation}
@@ -119,6 +128,9 @@ class Photos extends Component {
                     seconds={3}
                 />
                 }
+
+                </React.Fragment>}
+
             </div>
         );
     }
@@ -127,17 +139,15 @@ class Photos extends Component {
 
 
 
-    handleSearch = (query) =>{
-        this.setState({searchQuery: query});
-    };
 
-    handleLike = (post) =>{
-        const posts = [...this.state.posts];
-        const index = posts.indexOf(post);
-        posts[index] = {...posts[index]};
-        posts[index].liked = !posts[index].liked;
-        posts[index].numberOfLikes = posts[index].liked === true? posts[index].numberOfLikes+1: posts[index].numberOfLikes-1;
-        this.setState({posts});
+
+    handleLike = (photo) =>{
+        const photos = [...this.state.photos];
+        const index = photos.indexOf(photo);
+        photos[index] = {...photos[index]};
+        photos[index].liked = !photos[index].liked;
+        photos[index].numberOfLikes = photos[index].liked === true? photos[index].numberOfLikes+1: photos[index].numberOfLikes-1;
+        this.setState({photos});
     };
 
     handleCommentDelete = (comment) => {
@@ -145,17 +155,26 @@ class Photos extends Component {
         this.setState({comments});
     };
 
-    handlePostDelete = (post) => {
-        const posts = this.state.posts.filter(p => p._id !== post._id);
-        this.setState({posts});
+    handlePostDelete = async(photo) => {
+        const originalPhotos = this.state.photos;
+        const photos = this.state.photos.filter(p => p.id !== photo.id);
+        this.setState({photos});
+
+        try{
+            await deletePhoto(photo.id);
+
+        }catch (e) {
+            this.setState({posts: originalPhotos})
+        }
     };
 
     handleNewPost = (event) =>{
         const postAdding = !this.state.postAdding;
         this.setState({postAdding});
 
-        const img = URL.createObjectURL(event.target.files[0]);
-        this.setState({imgPreview:img});
+        const imgFile = event.target.files[0];
+        const imgPreview = URL.createObjectURL(event.target.files[0]);
+        this.setState({imgPreview:imgPreview, imgFile: imgFile});
     };
 
     handleNewRelation= () =>{
@@ -164,20 +183,27 @@ class Photos extends Component {
         this.setState({addingRelation});
     };
 
-    handleAddPost = () =>{
-        const img = this.state.imgPreview;
-        if(img){
+    handleAddPost = async () =>{
+        const img = this.state.imgFile;
+        const originalPhotos = [ ...this.state.photos];
+        if(img) {
             const post = {
-            _id: 'fwfwafwwff2rherr32t',
-            author: 'Kasia',
-            img: img,
-            numberOfComments: 0,
-            numberOfViews: 0,
-            numberOfLikes: 0
-        };
-        const posts=[post, ...this.state.posts];
-        const imgPreview = null;
-        this.setState({posts, imgPreview});}
+                author: this.props.user.user.id,
+                img: img,
+            };
+
+            try {
+                const newPhoto = await addPhoto(img);
+                const photos = [newPhoto, ...this.state.photos];
+                const imgPreview = null;
+                this.setState({photos, imgPreview});
+
+            } catch (e) {
+                const imgPreview = null;
+                this.setState({photos: originalPhotos, imgPreview});
+            }
+        }
+
     };
 
 
@@ -201,9 +227,7 @@ class Photos extends Component {
         this.setState({imgPreview});
     };
 
-    handleSelect = () =>{
-        this.setState({searchQuery: ''})
-    };
+
 
     handleCommentSubmit = (text) =>{
         const comment= {_id: "igrwrgrgegergregd24", author: 'Kasia', text: text};
@@ -220,11 +244,21 @@ class Photos extends Component {
         this.handleRelationViewsChange(this.state.whichRelationToShow);
     };
 
-    handleRelationViewsChange = (relation) =>{
+    handleRelationViewsChange = async (relation) =>{
+
+        const requestParams = {
+            headers: authHeader()
+        };
+
+        relation.numberOfViews++;
+
+        const data = {numberOfViews: relation.numberOfViews};
+        console.log("data", data);
+        await http.put(config.apiEndpoint + "/relations/"+ relation.id + "/updateViews", data, requestParams);
+
         const relations = [...this.state.relations];
         const index = relations.indexOf(relation);
-        relations[index] = {...relations[index]};
-        relations[index].numberOfViews =relations[index].numberOfViews+1;
+        relations[index]= {...relation};
         this.setState({relations});
     };
 }

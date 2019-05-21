@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import ScrollBar from "react-perfect-scrollbar";
 import Avatar from '@material-ui/core/Avatar';
 import _ from "lodash";
+import config from '../config.json'
+
 
 class RelationsSection extends Component {
     constructor(props, context) {
@@ -26,6 +28,45 @@ class RelationsSection extends Component {
         const relationsSort = this.state.relationsSort ==='asc'? 'desc' : 'asc';
         this.setState({relationsSort});
     }
+
+    parseDate = (relation) => {
+
+        let date = new Date(Date.parse(relation.createdAt));
+        let today = new Date();
+
+
+        let time = Math.abs(Math.floor((
+            Date.UTC(
+                date.getFullYear(),
+                date.getMonth(),
+                date.getDate(),
+                date.getHours(),
+                date.getMinutes()) -
+            Date.UTC(
+                today.getFullYear(),
+                today.getMonth(),
+                today.getDate(),
+                today.getHours(),
+                today.getMinutes()))
+            / (1000 * 60)));
+        if (time / 60 >= 1) {
+            time /= 60;
+
+            if (time / 24 >= 1) {
+
+                time /= 24;
+
+            } else {
+                time = Math.floor(time) + ' hours ';
+            }
+        } else {
+            time = Math.floor(time) + ' minutes ';
+        }
+
+        time = time + 'ago';
+
+        return time;
+    };
 
     render() {
         const  {size, handleAdd, showModal } = this.props;
@@ -89,26 +130,28 @@ class RelationsSection extends Component {
 
 
                             return <div
-                                key={relation._id}
+                                key={relation.id}
                                 className={className}
                             >
                                 {size === 0 ?
                                     <div onClick={() => showModal(relation)}
                                          className="clickable">
                                         <figure>
-                                            <Avatar src={relation.img} className="big-avatar-sm ml-3 mt-2"/>
+                                            <Avatar src={`${config.apiEndpoint}/relations/${relation.id}`} className="big-avatar-sm ml-3 mt-2"/>
                                             <figcaption className="link-style">
-                                                <div className="text-center">
-                                                    <div className="ml-2 mt-2"> {relation.author} </div>
+                                                <div className="text-left">
+                                                    <div className="ml-2 "> {relation.userName} </div>
+                                                    <div className="ml-2  relation-time"> {this.parseDate(relation)} </div>
                                                 </div>
                                             </figcaption>
                                         </figure>
                                     </div> :
                                     <div onClick={()=>showModal(relation)}
                                          className="link-style row ml-2 mr-0 mt-3 clickable">
-                                        <Avatar src={relation.img} className="big-avatar"/>
+                                        <Avatar src={`${config.apiEndpoint}/relations/${relation.id}`} className="big-avatar"/>
                                         <div>
-                                            <div className="ml-2 mt-2"> {relation.author} </div>
+                                            <div className="ml-2 "> {relation.userName} </div>
+                                            <div className="ml-2  relation-time"> {this.parseDate(relation)} </div>
                                         </div>
                                     </div>
                                 }

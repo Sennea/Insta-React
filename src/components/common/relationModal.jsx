@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Modal} from "react-bootstrap";
-import Avatar from '@material-ui/core/Avatar';
+import config from "../../config";
 
 
 class RelationModal extends Component {
@@ -37,38 +37,32 @@ class RelationModal extends Component {
         const {percentSeconds} = this.state;
 
         return (
-            <Modal show= {show} onHide={() => handleClose()} >
+            <Modal show={show} onHide={() => handleClose()}>
                 <div className="progress mt-1">
                     <div
                         className="progress-bar progress-bar-striped progress-bar-animated"
                         role="progressbar"
-                        style={{width: percentSeconds+"%"}}
+                        style={{width: percentSeconds + "%"}}
                     />
                 </div>
 
                 <Modal.Header closeButton>
 
                     <Modal.Title>
-                        <div className="row ml-2 mr-0 mt-3">
-                            <Avatar src={relation.img} className="big-avatar"/>
-                            <div>
-                                <div className="ml-2 mt-2"> {relation.author} </div>
-                            </div>
-                        </div>
-
+                        <span className="float-left"> {relation.userName}</span>
                     </Modal.Title>
 
                 </Modal.Header>
                 <Modal.Body>
                     <img
-                        src={relation.img}
-                        alt={relation.img}
+                        src={`${config.apiEndpoint}/relations/${relation.id}`}
+                        alt={`${config.apiEndpoint}/relations/${relation.id}`}
                         className="relation-show"
                     />
                 </Modal.Body>
                 <Modal.Footer>
-                    <i className="fa fa-eye"/>
-                    <span>{relation.numberOfViews}</span>
+                    <i className="fa fa-eye ml-5 align-bottom right"/>
+                    <span className="float-right">{relation.numberOfViews}</span>
                 </Modal.Footer>
             </Modal>
         );

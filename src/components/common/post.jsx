@@ -2,80 +2,47 @@ import React, {Component} from 'react';
 import PhotoOwner from "./photoOwner";
 import PhotoSection from "../photoSection";
 import CommentsSection from "../commentsSection";
+import config from "../../config";
 
 class Post extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            imageElementHeight: 0,
-            imageElementHeightTab: [{}],
-            tmpTab: [{}],
-        }
-    }
-
-    getImageElementHeight = (id, imageElementHeight) => {
-        let tab = this.state.tmpTab;
-        const object = {id: id, height: imageElementHeight};
-        tab.push(object);
-        this.setState({tmpTab: tab});
-        if(this.state.tmpTab.length === this.props.posts.length)
-            this.setState({imageElementHeightTab: this.state.tmpTab});
-
-    };
-
-    setResultHeight = (post) => {
-        let result = this.state.imageElementHeightTab.find(obj => {
-            return obj.id === post._id;
-        });
-        if(result){
-            return result.height;
-        }
-        return null;
-    };
 
     render(){
-        const {size, posts, comments, handleLike, handleCommentDelete, handleCommentSubmit, handlePostDelete} = this.props;
-
-
+        const {size, photos, comments, handleLike, handleCommentDelete, handleCommentSubmit, handlePostDelete, user} = this.props;
         return (
             <div>
-                {posts.map((post) =>
+                {photos.map((photo) =>
                     {
-                        const postHeight = this.setResultHeight(post);
-                    return <div className="post mb-2"
-                         onMouseEnter={this.handleDeleteButtonShow}
-                         onMouseLeave={this.handleDeleteButtonShow}
-                         key={post._id}>
+                        return <div className="post mb-2"
+                                    key={photo.id}>
 
-                        <PhotoOwner
-                            post={post}
-                        />
-                        <div className="row">
-                            <PhotoSection
-                                getHeight={this.getImageElementHeight}
-                                post={post}
-                                size={size}
-                                onLike={handleLike}
-                                liked={post.liked}
-                                onDelete={handlePostDelete}
+                            <PhotoOwner
+                                photo={photo}
                             />
+                            <div className="row">
+                                <PhotoSection
+                                    user={user}
+                                    photo={photo}
+                                    size={size}
+                                    onLike={handleLike}
+                                    liked={photo.liked}
+                                    onDelete={handlePostDelete}
+                                />
+
+                                <CommentsSection
+                                    comments={comments}
+                                    onDelete={handleCommentDelete}
+                                    onCommentSubmit={handleCommentSubmit}
+                                />
+                            </div>
+
                             <CommentsSection
-                                height={postHeight}
                                 comments={comments}
+                                size={size}
                                 onDelete={handleCommentDelete}
                                 onCommentSubmit={handleCommentSubmit}
                             />
-                        </div>
 
-                        <CommentsSection
-                            comments={comments}
-                            size={size}
-                            onDelete={handleCommentDelete}
-                            onCommentSubmit={handleCommentSubmit}
-                        />
-
-                    </div>
+                        </div>;
                     }
                 )}
             </div>

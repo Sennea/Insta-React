@@ -1,39 +1,48 @@
 import {NavLink} from "react-router-dom";
-
 import React from 'react';
 import Photos from "./photos";
 import SearchBoxPerson from "./searchBoxPerson";
-
+import config from "../config";
 class NavBar extends Photos {
     render() {
-        const {searchQuery} = this.state;
-        const {filteredPersons: filtered} = this.getSearchedData();
+        const {user} = this.props;
+
 
         return (
             <div className="sticky-top">
-                <nav className="navbar navbar-expand-sm navbar-light navbar-bg sticky-top">
+                <div className="navbar navbar-expand-sm navbar-light navbar-bg sticky-top">
                     <NavLink className="navbar-brand ml-4" to="/photos">
                         <i className="fa fa-camera-retro"/>
                     </NavLink>
                     <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav">
-                            <li className="nav-item col-2">
-                                <NavLink className="nav-link" to="/login">Login</NavLink>
-                            </li>
-                            <li className="nav-item col-2">
-                                <NavLink className="nav-link" to="/register">Register</NavLink>
-                            </li>
-                            <li className="nav-item col-10">
+                        <div className="navbar-nav">
+                            {!user &&
+                            <React.Fragment>
+                                <NavLink className="nav-link nav-item" to="/login">
+                                    Login
+                                </NavLink>
+                                <NavLink className="nav-link nav-item" to="/register">
+                                    Register
+                                </NavLink>
+                            </React.Fragment>}
+
+                            {user &&
+                            <React.Fragment>
+                                <NavLink className="nav-link nav-item" to={`${config.apiEndpoint}/users/${user.id}`}>
+                                    {user.user.name}
+                                </NavLink>
+                                <NavLink className="nav-link nav-item" to="/logout">
+                                    Logout
+                                </NavLink>
+                            </React.Fragment>}
+
+
                                 <SearchBoxPerson
-                                    value={searchQuery}
-                                    onChange={this.handleSearch}
-                                    filtered={filtered}
-                                    handleSelect={this.handleSelect}
                                 />
-                            </li>
-                        </ul>
+
+                        </div>
                     </div>
-                </nav>
+                </div>
             </div>
         );
     }

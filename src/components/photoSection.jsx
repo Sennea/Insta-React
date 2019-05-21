@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import posed from 'react-pose';
 import PostModal from "./common/postModal";
+import posed from 'react-pose';
+import config from '../config.json'
 
 const TIME = 500;
 
@@ -42,43 +43,38 @@ class PhotoSection extends Component {
 
     render()
     {
-        const {post, onLike, onDelete,size} = this.props;
+        const {photo, onLike, onDelete,size, user} = this.props;
         const {hovered, showModal} = this.state;
         return (
             <div className="col-md-12 pl-4 pr-4 col-lg-8 text-center "
                  onMouseEnter={this.handleDeleteButtonShow}
                  onMouseLeave={this.handleDeleteButtonShow}>
-                {hovered && <i
+                {hovered && user.user.id === photo.user && <i
                     className={size === 0 ? "fa fa-minus-circle float-right text-lighter clickable delete-photo-sm" :
                         "fa fa-minus-circle float-right text-lighter clickable delete-photo"}
-                    onClick={() => onDelete(post)}
+                    onClick={() => onDelete(photo)}
                 />}
 
                 {showModal &&
                 <PostModal
                     show={showModal}
                     handleClose={this.handleModalShow}
-                    post={post}
+                    photo={photo}
                 />
                 }
 
                 <div className="img-container ml-3 mr-3">
                     <img
-                        ref={(imageElement) => this.imageElement = imageElement}
-                        src={post.img}
-                        onLoad={() => {
-                            const height = this.imageElement.clientHeight;
-                            this.props.getHeight(post._id, height)
-                        }}
-                        alt={post.img}
+                        src={`${config.apiEndpoint}/photos/${photo.id}`}
+                        alt={`${config.apiEndpoint}/photos/${photo.id}`}
                         className="rounded clickable embed-responsive embed-responsive-16by9 post-size"
                         onDoubleClick={() => {
-                            onLike(post);
+                            onLike(photo);
                         }}
                     />
                     {
                         <Star className="fa fa-star like-star fa-3x clickable" onDoubleClick={() => {
-                            onLike(post);
+                            onLike(photo);
                         }} pose={this.state.showStar ? 'visible' : 'hidden'}/>
                     }
                 </div>
@@ -91,13 +87,13 @@ class PhotoSection extends Component {
                         <div className="ml-2 d-inline-block"/>
                     </div>
                     <div className="col-4 clickable"
-                         onDoubleClick={() => onLike(post)}>
-                        <i className={post.liked === true ? "fa fa-star" : "fa fa-star-o"}/>
-                        <div className="ml-2 d-inline-block">{post.numberOfLikes}</div>
+                         onDoubleClick={() => onLike(photo)}>
+                        <i className={photo.liked === true ? "fa fa-star" : "fa fa-star-o"}/>
+                        <div className="ml-2 d-inline-block">{photo.likes}</div>
                     </div>
                     <div className="col-4">
                         <i className="fa fa-comment-o"/>
-                        <div className="ml-2 d-inline-block">{post.numberOfComments}</div>
+                        <div className="ml-2 d-inline-block">{photo.comments}</div>
                     </div>
                 </div>
             </div>
