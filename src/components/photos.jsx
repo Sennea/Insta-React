@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {getComments} from "../services/fakeComents";
-import {getRelations} from "../services/relationsService";
+import {addRelation, getRelations} from "../services/relationsService";
 import {addPhoto, deletePhoto, getPhotos} from "../services/photoService";
 import {getUsers} from "../services/personServicce";
 import Post from "./common/post";
@@ -187,11 +187,6 @@ class Photos extends Component {
         const img = this.state.imgFile;
         const originalPhotos = [ ...this.state.photos];
         if(img) {
-            const post = {
-                author: this.props.user.user.id,
-                img: img,
-            };
-
             try {
                 const newPhoto = await addPhoto(img);
                 const photos = [newPhoto, ...this.state.photos];
@@ -207,19 +202,23 @@ class Photos extends Component {
     };
 
 
-    handleAddRelation = () =>{
-        const img = this.state.imgPreview;
-        if(img){
-            const relation = {
-                _id: 'fwfwafwwff2r32t',
-                author: 'Kasia',
-                img: img,
-                numberOfViews: 0
-            };
-        const relations=[relation, ...this.state.relations];
-        const imgPreview = null;
-        const addingRelation = !this.state.addingRelation;
-        this.setState({relations, imgPreview, addingRelation});}
+    handleAddRelation = async () =>{
+        const img = this.state.imgFile;
+        const originalRelations = [ ...this.state.relations];
+        if(img) {
+            try {
+                const newRelation = await addRelation(img);
+                const relations = [newRelation, ...this.state.photos];
+                const imgPreview = null;
+                const addingRelation = !this.state.addingRelation;
+                this.setState({relations, imgPreview, addingRelation});
+
+            } catch (e) {
+                const imgPreview = null;
+                const addingRelation = !this.state.addingRelation;
+                this.setState({photos: originalRelations, imgPreview, addingRelation});
+            }
+        }
     };
 
     handleCancel = () => {

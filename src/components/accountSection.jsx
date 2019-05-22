@@ -83,6 +83,7 @@ class AccountSection extends Photos {
                     <div className="col-md-8 offset-md-1 col-10 mt-2">
                         <div className="col-12">
                             <Post
+                                fromAccount = {true}
                                 user ={user}
                                 size={size}
                                 photos={photos}

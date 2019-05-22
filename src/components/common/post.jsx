@@ -7,7 +7,7 @@ import config from "../../config";
 class Post extends Component {
 
     render(){
-        const {size, photos, comments, handleLike, handleCommentDelete, handleCommentSubmit, handlePostDelete, user} = this.props;
+        const {size, photos, comments, fromAccount, handleLike, handleCommentDelete, handleCommentSubmit, handlePostDelete, user} = this.props;
         return (
             <div>
                 {photos.map((photo) =>
@@ -15,9 +15,10 @@ class Post extends Component {
                         return <div className="post mb-2"
                                     key={photo.id}>
 
-                            <PhotoOwner
+                            {!fromAccount && <PhotoOwner
                                 photo={photo}
-                            />
+                            /> }
+                            {fromAccount && <div className="mt-2"/>}
                             <div className="row">
                                 <PhotoSection
                                     user={user}
