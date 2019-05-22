@@ -49,18 +49,18 @@ class SearchBoxPerson extends Component {
                 />
 
                 {filtered.length > 0 ?
-                    <div onMouseLeave={this.handleSelect}
-                         className={query !== "" ? "dropdown-menu d-block ml-4 col-9" : "d-none"}>
-                        {filtered.map((person, index) =>
+                        <div onMouseLeave={this.handleSelect}
+                             className={query !== "" ? "dropdown-menu d-inline-block offset-3 col-3" : "d-none"}>
+                            {filtered.map((person, index) =>
 
-                            <SearchedPerson
-                                key={person.id}
-                                person={person}
-                                index={index}
-                                handleSelect={this.handleSelect}
-                            />
-                        )}
-                    </div> : null}
+                                <SearchedPerson
+                                    key={person.id}
+                                    person={person}
+                                    index={index}
+                                    handleSelect={this.handleSelect}
+                                />
+                            )}
+                        </div> : null}
             </form>
         );
     }

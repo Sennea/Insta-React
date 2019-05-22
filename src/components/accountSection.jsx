@@ -20,14 +20,12 @@ class AccountSection extends Photos {
     async componentDidMount () {
         const author = this.props.match.params.author;
         const person = await getUser(author);
-        console.log("HELLO FROM ACCOUNT SECTION", person.photos);
         let photos = [];
 
         person.photos.forEach(photo => {
             photos.push({id: photo}) ;
         });
 
-        console.log("OP", photos);
         this.setState({person, photos : photos});
     }
 
@@ -45,15 +43,15 @@ class AccountSection extends Photos {
             console.log(personPosts);
             person.numberOfPosts = personPosts.length;
             let number= 0;
-            personPosts.map(p => number += p.numberOfLikes);
-            person.numberOfLikes =number;
+            personPosts.map(p => number += p.likes);
+            person.likes =number;
             this.setState({personPosts, comments});
         }
     }
 
 
     render() {
-        const {person,personPosts, comments, size, liked, photos} = this.state;
+        const {person,personPosts, comments, size, photos} = this.state;
         let user = {};
         user.user = person;
         return (
@@ -76,8 +74,6 @@ class AccountSection extends Photos {
                                     size={size}
                                 />
                             }
-
-
                         </div>
                     </div>
                     <div className="col-md-8 offset-md-1 col-10 mt-2">
@@ -90,7 +86,6 @@ class AccountSection extends Photos {
                                 posts={personPosts}
                                 comments={comments}
                                 handleLike={this.handleLike}
-                                liked={liked}
                                 handleCommentDelete={this.handleCommentDelete}
                                 handleCommentSubmit={this.handleCommentSubmit}
                             />
