@@ -96,16 +96,6 @@ class AccountSection extends Photos {
         );
     }
 
-    handleLike = (post) =>{
-        const posts = [...this.state.personPosts];
-        const index = posts.indexOf(post);
-        posts[index] = {...posts[index]};
-        posts[index].liked = !posts[index].liked;
-        const liked = posts[index].liked;
-        posts[index].numberOfLikes = posts[index].liked === true? posts[index].numberOfLikes+1: posts[index].numberOfLikes-1;
-        this.setState({personPosts: posts, liked});
-    }
-
 }
 
 export default AccountSection;
