@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import PhotoOwner from "./photoOwner";
 import PhotoSection from "../photoSection";
 import CommentsSection from "../commentsSection";
-import config from "../../config";
 
 class Post extends Component {
 

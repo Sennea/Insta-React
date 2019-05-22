@@ -14,6 +14,7 @@ class SearchBoxPerson extends Component {
         const {query} = this.state;
 
         const {data: personsData} = await getUsers(query);
+        console.log(personsData);
         let filtered = [...personsData];
 
         this.setState( {filtered:filtered});
@@ -22,7 +23,6 @@ class SearchBoxPerson extends Component {
     handleSearch = (query) => {
         this.setState({query: query},
             async () => {
-                console.log(this.state.query)
                 await this.getSearchedData();
             });
 

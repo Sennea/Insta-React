@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import ScrollBar from "react-perfect-scrollbar";
 import Avatar from '@material-ui/core/Avatar';
-import _ from "lodash";
 import config from '../config.json'
-
+import http from '../services/httpService';
 
 class RelationsSection extends Component {
     constructor(props, context) {
@@ -13,20 +12,31 @@ class RelationsSection extends Component {
         this.getSortedRelations = this.getSortedRelations.bind(this);
 
         this.state = {
-            relationsSort: 'asc',
+            relationsSort: 'desc',
+            sortedRelations: []
         };
 
     }
 
-    getSortedRelations(){
-        const {relations} = this.props;
-        const toSort = [...relations];
-        return _.orderBy(toSort, ['author'], [this.state.relationsSort]);
+    async componentDidMount() {
+        const sortedRelations = await this.getSortedRelations();
+        this.setState({sortedRelations});
     }
 
-    handleSortChange(){
+    async getSortedRelations(){
+        const dir = this.state.relationsSort === "asc" ? 1 : -1;
+        const sortedRelations = await http.get(`${config.apiEndpoint}/relations/sort/created?dir=${dir}`);
+        return sortedRelations.data;
+    }
+
+   async handleSortChange(){
+        console.log(this.state.relationsSort);
         const relationsSort = this.state.relationsSort ==='asc'? 'desc' : 'asc';
-        this.setState({relationsSort});
+        this.setState({relationsSort}, async () => {
+            const sortedRelations = await this.getSortedRelations();
+            this.setState({sortedRelations});
+
+        });
     }
 
     parseDate = (relation) => {
@@ -70,8 +80,8 @@ class RelationsSection extends Component {
 
     render() {
         const  {size, handleAdd, showModal } = this.props;
-        const  {relationsSort} = this.state;
-        const sorted = this.getSortedRelations();
+        const  {relationsSort, sortedRelations}= this.state;
+
 
         return (
 
@@ -116,12 +126,13 @@ class RelationsSection extends Component {
                     </div>
                 }
                 {
-                    sorted.map((relation, index) => {
+                    sortedRelations.length > 0 &&
+                    sortedRelations.map((relation, index) => {
                             let className = "";
                             if (size === 0) {
                                 if (index === 0)
                                     className = "side-scroll mr-5 ml-2";
-                                else if (index === sorted.length - 1)
+                                else if (index === sortedRelations.length - 1)
                                     className = "side-scroll mr-2";
                                 else
                                     className = "side-scroll mr-5";

@@ -1,11 +1,9 @@
 import React from 'react';
-import {addPhoto, deletePhoto, getPhotos} from "../services/photoService";
+import {getPhotos} from "../services/photoService";
 import {getUser} from "../services/personServicce";
-import {getComments} from "../services/fakeComents";
 import ProfileDetails from "./common/profileDetails";
 import Post from "./common/post";
 import Photos from "./photos";
-import {getMyPhotosId} from "../services/userService";
 
 class AccountSection extends Photos {
     state={
@@ -21,31 +19,47 @@ class AccountSection extends Photos {
         const author = this.props.match.params.author;
         const person = await getUser(author);
         let photos = [];
-
+        const {data: photosData} = await getPhotos();
         person.photos.forEach(photo => {
-            photos.push({id: photo}) ;
+            photosData.forEach(photoAll => {
+                if(photoAll.id === photo)
+                    photos.push(photoAll) ;
+            })
+
+        });
+
+        const user = JSON.parse(localStorage.getItem("user"));
+
+        photos.forEach(photo => {
+            const value = user.user.meta.liked.indexOf(photo.id) > -1 ? "liked" : user.user.meta.disliked.indexOf(photo.id) > -1 ? "disliked" : "";
+            photo.liked = value === "liked";
         });
 
         this.setState({person, photos : photos});
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    async componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps.match.params.author !== this.props.match.params.author){
-            const comments = [...getComments()];
-
             const author = this.props.match.params.author;
-            const person = getUser(author);
-            //if(!person) return this.props.history.replace('not-found');
-            this.setState({person});
+            const person = await getUser(author);
+            let photos = [];
+            const {data: photosData} = await getPhotos();
+            person.photos.forEach(photo => {
+                photosData.forEach(photoAll => {
+                    if(photoAll.id === photo)
+                        photos.push(photoAll) ;
+                })
 
+            });
 
-            const personPosts = [...getMyPhotosId(person.author)];
-            console.log(personPosts);
-            person.numberOfPosts = personPosts.length;
-            let number= 0;
-            personPosts.map(p => number += p.likes);
-            person.likes =number;
-            this.setState({personPosts, comments});
+            const user = JSON.parse(localStorage.getItem("user"));
+
+            photos.forEach(photo => {
+                const value = user.user.meta.liked.indexOf(photo.id) > -1 ? "liked" : user.user.meta.disliked.indexOf(photo.id) > -1 ? "disliked" : "";
+                photo.liked = value === "liked";
+            });
+
+            this.setState({person, photos : photos});
         }
     }
 
@@ -88,6 +102,8 @@ class AccountSection extends Photos {
                                 handleLike={this.handleLike}
                                 handleCommentDelete={this.handleCommentDelete}
                                 handleCommentSubmit={this.handleCommentSubmit}
+                                handlePostDelete={this.handlePostDelete}
+
                             />
                         </div>
                     </div>

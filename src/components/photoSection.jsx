@@ -33,6 +33,11 @@ class PhotoSection extends Component {
         })
     };
 
+    componentDidMount() {
+        const userStorage = JSON.parse(localStorage.getItem("user"));
+        this.setState({userStorage});
+    }
+
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps.liked !== this.props.liked && this.props.liked === true) {
             if (this.props.liked) {
@@ -43,13 +48,15 @@ class PhotoSection extends Component {
 
     render()
     {
-        const {photo, onLike, onDelete,size, user} = this.props;
+        const {photo, onLike, onDelete,size} = this.props;
         const {hovered, showModal} = this.state;
+
         return (
             <div className="col-md-12 pl-4 pr-4 col-lg-8 text-center "
                  onMouseEnter={this.handleDeleteButtonShow}
                  onMouseLeave={this.handleDeleteButtonShow}>
-                {hovered && user.user.id === photo.user && <i
+
+                {hovered && this.state.userStorage.user.id === photo.user && <i
                     className={size === 0 ? "fa fa-minus-circle float-right text-lighter clickable delete-photo-sm" :
                         "fa fa-minus-circle float-right text-lighter clickable delete-photo"}
                     onClick={() => onDelete(photo)}

@@ -2,11 +2,10 @@ import {NavLink} from "react-router-dom";
 import React from 'react';
 import Photos from "./photos";
 import SearchBoxPerson from "./searchBoxPerson";
-import config from "../config";
+
 class NavBar extends Photos {
     render() {
         const {user} = this.props;
-
 
         return (
             <div className="sticky-top">
@@ -28,7 +27,7 @@ class NavBar extends Photos {
 
                             {user &&
                             <React.Fragment>
-                                <NavLink className="nav-link nav-item" to={`${config.apiEndpoint}/users/${user.id}`}>
+                                <NavLink className="nav-link nav-item" to={`/account/${user.user.id}`}>
                                     {user.user.name}
                                 </NavLink>
                                 <NavLink className="nav-link nav-item" to="/logout">

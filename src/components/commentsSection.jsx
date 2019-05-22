@@ -9,6 +9,7 @@ class CommentsSection extends Component {
     };
 
     render() {
+        // eslint-disable-next-line
         const {comments, size, onDelete, onCommentSubmit, height} = this.props;
         const {text} = this.state;
         return (

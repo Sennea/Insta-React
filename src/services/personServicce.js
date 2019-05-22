@@ -7,11 +7,8 @@ export function getUsers(query){
 
     const userEndpoint = config.apiEndpoint + "/users/filter?search=" + query;
 
-    return http.get(userEndpoint)
-        .then(res => {
-            console.log(res.data);
-            return res;
-        })
+    return http.get(userEndpoint);
+
 }
 
 export function getUser(userID){

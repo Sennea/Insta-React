@@ -34,6 +34,13 @@ class Photos extends Component {
         const {data: photosData} = await getPhotos();
         const photos = [...photosData];
 
+        const user = JSON.parse(localStorage.getItem("user"));
+
+        photos.forEach(photo => {
+            const value = user.user.meta.liked.indexOf(photo.id) > -1 ? "liked" : user.user.meta.disliked.indexOf(photo.id) > -1 ? "disliked" : "";
+            photo.liked = value === "liked";
+        });
+
         const {data: relationsData} = await getRelations();
         const relations = [...relationsData];
 
@@ -94,8 +101,16 @@ class Photos extends Component {
                     </div>
                     }
                     <div className="col-12 mt-4 ">
-                        {photos.length === 0 && !imgPreview?
-                            <h1 className="text-center">There are no posts for You :'(</h1>: null}
+                        {
+                            photos.length === 0 && !imgPreview ?
+                            <div className="col-12 text-center justify-content-center d-flex align-items-center">
+                                <div className="spinner-border" role="status">
+                                    <span className="sr-only">Loading...</span>
+                                </div>
+                            </div>
+                            :
+                            null
+                        }
 
                         <Post
                             user={user}
@@ -141,12 +156,49 @@ class Photos extends Component {
 
 
 
-    handleLike = (photo) =>{
+    handleLike = async (photo) =>{
         const photos = [...this.state.photos];
+        console.log(photos)
         const index = photos.indexOf(photo);
         photos[index] = {...photos[index]};
+        const user = JSON.parse(localStorage.getItem("user"));
+        const previous = user.user.meta.liked.indexOf(photo.id) > -1 ? "liked" : user.user.meta.disliked.indexOf(photo.id) > -1 ? "disliked" : "";
+
+        if(previous === "liked"){
+           const index = user.user.meta.liked.indexOf(photo.id);
+           user.user.meta.liked.splice(index);
+
+        }else if(previous === "disliked"){
+            const index = user.user.meta.disliked.indexOf(photo.id);
+            user.user.meta.disliked.splice(index);
+        }
+
+
+        let after = "";
+
+        if(previous === "liked" )
+            after = "disliked";
+        else if(previous === "disliked"|| previous === "")
+            after = "liked";
+
+        const requestParams = {
+            headers: authHeader()
+        };
+
+
+        const data = after === "liked" ? {liked: photo.id} : {disliked: photo.id};
+        await http.put(config.apiEndpoint + "/users/updateMeta", data, requestParams);
+
+        after === "liked" ? user.user.meta.liked.push(photo.id) : user.user.meta.disliked.push(photo.id);
+
+        localStorage.setItem("user", JSON.stringify(user));
+
+        const like = after === "liked" ? 1 : -1;
+
+        await http.put(config.apiEndpoint + "/photos/" + photo.id + "/updateLikes", {likes: like}, requestParams);
+
         photos[index].liked = !photos[index].liked;
-        photos[index].numberOfLikes = photos[index].liked === true? photos[index].numberOfLikes+1: photos[index].numberOfLikes-1;
+        photos[index].likes = after === "liked" ? photos[index].likes + 1: photos[index].likes - 1;
         this.setState({photos});
     };
 
@@ -208,7 +260,7 @@ class Photos extends Component {
         if(img) {
             try {
                 const newRelation = await addRelation(img);
-                const relations = [newRelation, ...this.state.photos];
+                const relations = [newRelation, ...this.state.relations];
                 const imgPreview = null;
                 const addingRelation = !this.state.addingRelation;
                 this.setState({relations, imgPreview, addingRelation});
